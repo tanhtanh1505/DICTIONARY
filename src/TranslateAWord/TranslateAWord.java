@@ -1,4 +1,7 @@
-//public String translate(String word){
+public String translate(String word){
 	HashMap<String, String> s = initData.getHashMap();
-	//return result;
+	if (s.containsKey(word)) {
+		return word;
+	}
+	return s.get(word);
 }
