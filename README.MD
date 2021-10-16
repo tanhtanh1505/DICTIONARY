@@ -1,0 +1,1 @@
+//chỉ được sửa các file .fxml trong thư mục src\main\resources\com\example\dictionary\

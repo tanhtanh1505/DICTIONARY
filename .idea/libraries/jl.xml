@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jl">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/java/com/example/GoogleAPI/lib/jl.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

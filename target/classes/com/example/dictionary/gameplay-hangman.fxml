@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.PlayHangMan">
+   <children>
+      <Label fx:id="timecounter" layoutX="566.0" layoutY="35.0" text="Time: ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="guessedWord" layoutX="33.0" layoutY="335.0" onKeyPressed="#checkByEnter" prefHeight="21.0" prefWidth="142.0" promptText="Enter a character" />
+      <Button layoutX="36.0" layoutY="390.0" mnemonicParsing="false" onAction="#checkGuessedWord" text="Check" />
+      <Button layoutX="573.0" layoutY="430.0" mnemonicParsing="false" onAction="#getSuggestWord" prefHeight="31.0" prefWidth="83.0" text="Suggest" />
+      <Label fx:id="score" layoutX="33.0" layoutY="38.0" text="Score:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="guessWord" layoutX="40.0" layoutY="229.0" text="Label">
+         <font>
+            <Font name="Times New Roman Bold" size="36.0" />
+         </font></Label>
+      <Label fx:id="lives" layoutX="333.0" layoutY="41.0" text="Label">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

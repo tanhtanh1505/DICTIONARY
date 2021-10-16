@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.228643216080402" maxHeight="-Infinity" maxWidth="700" minHeight="500" minWidth="700" orientation="VERTICAL" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.HangMan">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <Label layoutX="248.0" layoutY="27.0" text="HANG MAN">
+               <font>
+                  <Font name="Times New Roman Bold" size="36.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <Button layoutX="239.0" layoutY="70.0" mnemonicParsing="false" onAction="#btnStart" prefHeight="45.0" prefWidth="221.0" text="Start" />
+            <Button layoutX="239.0" layoutY="268.0" mnemonicParsing="false" onAction="#btnExit" prefHeight="45.0" prefWidth="221.0" text="Exit" />
+            <Button layoutX="239.0" layoutY="205.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="221.0" text="Score" />
+            <Button layoutX="239.0" layoutY="139.0" mnemonicParsing="false" onAction="#btnPlayWithAI" prefHeight="45.0" prefWidth="221.0" text="Play With AI" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>

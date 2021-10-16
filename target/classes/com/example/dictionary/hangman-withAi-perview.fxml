@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.HangmanWithAiPerview">
+   <children>
+      <Label layoutX="111.0" layoutY="75.0" text="Enter the length of word">
+         <font>
+            <Font name="Times New Roman Bold" size="36.0" />
+         </font>
+      </Label>
+      <TextField fx:id="lengthOfWord" layoutX="207.0" layoutY="141.0" />
+      <Button layoutX="275.0" layoutY="227.0" mnemonicParsing="false" onAction="#startWithAi" text="Start" />
+   </children>
+</AnchorPane>

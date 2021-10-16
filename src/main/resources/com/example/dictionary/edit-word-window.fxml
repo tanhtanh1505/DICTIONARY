@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="594.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.EditWordController">
+   <children>
+      <Label fx:id="word" layoutX="275.0" layoutY="44.0" text="Word">
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="infoWord" layoutX="27.0" layoutY="95.0" onKeyTyped="#checkKeyType" prefHeight="211.0" prefWidth="248.0" wrapText="true" />
+      <Button layoutX="196.0" layoutY="337.0" mnemonicParsing="false" onAction="#submit" text="Submit" />
+      <Button layoutX="345.0" layoutY="337.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+      <WebView fx:id="previewChange" layoutX="323.0" layoutY="95.0" prefHeight="211.0" prefWidth="248.0" />
+   </children>
+</AnchorPane>
