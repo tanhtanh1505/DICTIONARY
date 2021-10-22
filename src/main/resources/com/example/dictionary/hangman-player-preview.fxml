@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.HangmanPlayerPreview">
+   <children>
+      <Label layoutX="200.0" layoutY="73.0" text="Tell me your name!">
+         <font>
+            <Font name="Times New Roman Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="namePlayer" layoutX="207.0" layoutY="169.0" />
+      <Button onAction="#letGo" layoutX="258.0" layoutY="260.0" mnemonicParsing="false" text="Let's go!!!" />
+   </children>
+</AnchorPane>

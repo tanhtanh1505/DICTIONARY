@@ -11,18 +11,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HangmanWithAiPerview {
+public class HangmanPlayerPreview {
     @FXML
-    TextField lengthOfWord;
+    TextField namePlayer;
 
-    public void startWithAi(ActionEvent event) throws IOException {
+    public void letGo(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("gameplay-hangman-AI-guess.fxml"));
+        loader.setLocation(getClass().getResource("gameplay-hangman-player-guess.fxml"));
         Parent mainParent = loader.load();
-        GameplayHangmanAIGuess controller = loader.getController();
-        controller.init(Integer.parseInt(lengthOfWord.getText()));
         Scene scene = new Scene(mainParent);
+        GameplayHangManPlayerGuess controller = loader.getController();
+        controller.initGame(namePlayer.getText());
         stage.setScene(scene);
     }
 }

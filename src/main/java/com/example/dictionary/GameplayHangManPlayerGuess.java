@@ -2,17 +2,20 @@ package com.example.dictionary;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.io.IOException;
 
-public class PlayHangMan implements Initializable {
+public class GameplayHangManPlayerGuess{
     @FXML
     private Label guessWord;
     @FXML
@@ -24,10 +27,11 @@ public class PlayHangMan implements Initializable {
     @FXML
     private Label score;
 
-    private GameHangMan game = new GameHangMan();
+    private GameHangManPlayerGuess game = new GameHangManPlayerGuess();
+    private String namePlayer = "";
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initGame(String name) {
+        namePlayer = name;
         game.init();
         guessWord.setText(game.getGuessedWord());
         lives.setText(String.valueOf(game.getNumberHeart()));
@@ -71,5 +75,18 @@ public class PlayHangMan implements Initializable {
         game.getSuggestWord();
         guessWord.setText(game.getGuessedWord());
         score.setText("Score: " + String.valueOf(game.getScore()));
+    }
+
+    public void exit(ActionEvent event) throws IOException {
+        //Luu diem
+        RankHangMan.add(namePlayer, game.getScore());
+        RankHangMan.Save();
+
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("hang-man.fxml"));
+        Parent mainParent = loader.load();
+        Scene scene = new Scene(mainParent);
+        stage.setScene(scene);
     }
 }

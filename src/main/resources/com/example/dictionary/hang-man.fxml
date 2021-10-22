@@ -21,7 +21,7 @@
          <children>
             <Button layoutX="239.0" layoutY="70.0" mnemonicParsing="false" onAction="#btnStart" prefHeight="45.0" prefWidth="221.0" text="Start" />
             <Button layoutX="239.0" layoutY="268.0" mnemonicParsing="false" onAction="#btnExit" prefHeight="45.0" prefWidth="221.0" text="Exit" />
-            <Button layoutX="239.0" layoutY="205.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="221.0" text="Score" />
+            <Button layoutX="239.0" layoutY="205.0" mnemonicParsing="false" onAction="#btnScore" prefHeight="45.0" prefWidth="221.0" text="Score" />
             <Button layoutX="239.0" layoutY="139.0" mnemonicParsing="false" onAction="#btnPlayWithAI" prefHeight="45.0" prefWidth="221.0" text="Play With AI" />
          </children></AnchorPane>
   </items>

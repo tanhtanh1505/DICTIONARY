@@ -2,7 +2,7 @@ package com.example.dictionary;
 
 import java.util.Random;
 
-public class GameHangMan {
+public class GameHangManPlayerGuess {
     private final int MAX_BAD_GUESSES = 7;
     private int numFails = 0;
     private String answer;
@@ -10,7 +10,7 @@ public class GameHangMan {
     private int score = 100;
     private int len = 0;
 
-    public GameHangMan() {
+    public GameHangManPlayerGuess() {
     }
 
     public void init() {
@@ -53,10 +53,12 @@ public class GameHangMan {
         return score;
     }
 
-    public boolean getWin(){return len == answer.length();}
+    public boolean getWin() {
+        return len == answer.length();
+    }
 
-    public void getSuggestWord(){
-        if(score >= 100) {
+    public void getSuggestWord() {
+        if (score >= 100) {
             for (int i = 0; i < answer.length(); i++) {
                 if (answer.charAt(i) != gWord.charAt(i * 2)) {
                     score -= 200;
@@ -66,4 +68,6 @@ public class GameHangMan {
             }
         }
     }
+
+
 }
