@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -9,20 +11,69 @@
 
 <SplitPane dividerPositions="0.228643216080402" maxHeight="-Infinity" maxWidth="700" minHeight="500" minWidth="700" orientation="VERTICAL" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.HangMan">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: rgba(255, 230, 220, 1);">
          <children>
-            <Label layoutX="248.0" layoutY="27.0" text="HANG MAN">
-               <font>
-                  <Font name="Times New Roman Bold" size="36.0" />
-               </font>
-            </Label>
+            <ImageView fitHeight="171.0" fitWidth="602.0" layoutX="48.0" layoutY="-27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/hangman1.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: rgba(255, 230, 220, 1);">
          <children>
-            <Button layoutX="239.0" layoutY="70.0" mnemonicParsing="false" onAction="#btnStart" prefHeight="45.0" prefWidth="221.0" text="Start" />
-            <Button layoutX="239.0" layoutY="268.0" mnemonicParsing="false" onAction="#btnExit" prefHeight="45.0" prefWidth="221.0" text="Exit" />
-            <Button layoutX="239.0" layoutY="205.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="221.0" text="Score" />
-            <Button layoutX="239.0" layoutY="139.0" mnemonicParsing="false" onAction="#btnPlayWithAI" prefHeight="45.0" prefWidth="221.0" text="Play With AI" />
+            <ImageView fitHeight="394.0" fitWidth="600.0" layoutX="106.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/hangman2.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="239.0" layoutY="70.0" mnemonicParsing="false" onAction="#btnStart" prefHeight="45.0" prefWidth="221.0" text="Start">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Button>
+            <Button layoutX="239.0" layoutY="268.0" mnemonicParsing="false" onAction="#btnExit" prefHeight="45.0" prefWidth="221.0" text="Exit">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Button>
+            <Button layoutX="239.0" layoutY="205.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="221.0" text="Score">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Button>
+            <Button layoutX="239.0" layoutY="139.0" mnemonicParsing="false" onAction="#btnPlayWithAI" prefHeight="45.0" prefWidth="221.0" text="Play With AI">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Button>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="375.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/play.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="388.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/score.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="375.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/exit.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="413.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/robot.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
   </items>
 </SplitPane>

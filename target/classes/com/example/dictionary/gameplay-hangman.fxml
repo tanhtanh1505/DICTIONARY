@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -9,17 +10,25 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.PlayHangMan">
    <children>
+      <ImageView fitHeight="703.0" fitWidth="848.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../image/grass.png" />
+         </image>
+      </ImageView>
       <Label fx:id="timecounter" layoutX="566.0" layoutY="35.0" text="Time: ">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <TextField fx:id="guessedWord" layoutX="33.0" layoutY="335.0" onKeyPressed="#checkByEnter" prefHeight="21.0" prefWidth="142.0" promptText="Enter a character" />
-      <Button layoutX="36.0" layoutY="390.0" mnemonicParsing="false" onAction="#checkGuessedWord" text="Check" />
+      <Button layoutX="55.0" layoutY="386.0" mnemonicParsing="false" onAction="#checkGuessedWord" text="Check">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font></Button>
       <Button layoutX="573.0" layoutY="430.0" mnemonicParsing="false" onAction="#getSuggestWord" prefHeight="31.0" prefWidth="83.0" text="Suggest" />
       <Label fx:id="score" layoutX="33.0" layoutY="38.0" text="Score:">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
       <Label fx:id="guessWord" layoutX="40.0" layoutY="229.0" text="Label">

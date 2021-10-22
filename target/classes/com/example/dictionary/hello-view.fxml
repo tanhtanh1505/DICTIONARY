@@ -1,111 +1,252 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.web.*?>
 <?import javafx.scene.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
 
 <SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.HelloController">
-  <items>
-    <AnchorPane maxHeight="1.7976931348623157E308" minHeight="60.0" minWidth="0.0" prefHeight="80.0" prefWidth="598.0" SplitPane.resizableWithParent="false">
-         <children>
-            <Label alignment="CENTER" layoutX="263.0" layoutY="14.0" text="DICTIONARY" textAlignment="CENTER">
-               <font>
-                  <Font name="Times New Roman Bold" size="26.0" />
-               </font>
-            </Label>
-         </children></AnchorPane>
-      <TabPane minHeight="400.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Dịch từ">
-               <content>
-                  <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
-                    <items>
-                      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefHeight="160.0" prefWidth="210.0">
-                           <children>
-                              <TextField fx:id="wordFind" layoutX="20.0" layoutY="59.0" onKeyPressed="#keyHandle" onKeyReleased="#keyType" prefHeight="23.0" prefWidth="171.0" />
-                              <ComboBox fx:id="selectLangFrom" layoutX="46.0" layoutY="14.0" prefHeight="29.0" prefWidth="130.0" />
-                              <ListView fx:id="listWord" layoutX="12.0" layoutY="96.0" onMouseClicked="#selectWordSuggest" prefHeight="251.0" prefWidth="187.0" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="280.0" prefWidth="480.0">
-                           <children>
-                              <WebView fx:id="infoWord" layoutX="6.0" layoutY="49.0" prefHeight="309.0" prefWidth="466.0" />
-                              <Label fx:id="word" layoutX="5.0" layoutY="14.0" onMouseClicked="#speakWord">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Button layoutX="263.0" layoutY="9.0" mnemonicParsing="false" onAction="#mark" prefHeight="29.0" prefWidth="79.0" text="To Mark" />
-                              <Button fx:id="editWordBtn" layoutX="352.0" layoutY="9.0" mnemonicParsing="false" onAction="#editWord" text="Edit" />
-                              <Button layoutX="409.0" layoutY="9.0" mnemonicParsing="false" onAction="#deleteAWordInData" text="Delete" />
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
-               </content>
-          </Tab>
-          <Tab text="Dịch văn bản">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TextArea fx:id="EasayStart" layoutX="14.0" layoutY="50.0" prefHeight="297.0" prefWidth="277.0" wrapText="true" AnchorPane.leftAnchor="10.0" />
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="302.0" layoutY="165.0" mnemonicParsing="false" onAction="#essayTranslate" prefHeight="29.0" prefWidth="75.0" text="Dịch" />
-                        <TextArea fx:id="EasayResult" editable="false" layoutX="407.0" layoutY="50.0" prefHeight="297.0" prefWidth="277.0" wrapText="true" AnchorPane.rightAnchor="10.0" />
-                        <ComboBox fx:id="langFrom" layoutX="74.0" layoutY="11.0" prefWidth="150.0" promptText="Ngôn ngữ" />
-                        <ComboBox fx:id="langTo" layoutX="471.0" layoutY="11.0" prefWidth="150.0" promptText="Ngôn ngữ" />
-                        <Label layoutX="656.0" layoutY="27.0" onMouseClicked="#speakEssay" text="&lt;3" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-            <Tab text="Book Mark">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <ListView fx:id="listBookMark" layoutX="14.0" layoutY="17.0" onMouseClicked="#selectWordInBookMark" prefHeight="336.0" prefWidth="275.0" />
-                        <Button layoutX="612.0" layoutY="24.0" mnemonicParsing="false" onAction="#deleteAWordInBookMark" text="Delete" />
-                        <Button layoutX="601.0" layoutY="70.0" mnemonicParsing="false" onAction="#deleteBookMark" text="Delete All" />
-                        <WebView fx:id="infoWordInBookMark" layoutX="300.0" layoutY="17.0" prefHeight="335.0" prefWidth="284.0" />
-                     </children></AnchorPane>
-              </content>
-            </Tab>
-            <Tab text="History">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <ListView fx:id="listHistory" layoutX="14.0" layoutY="14.0" prefHeight="337.0" prefWidth="604.0" />
-                        <Button layoutX="627.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteHistory" text="Delete" />
-                     </children></AnchorPane>
-              </content>
-            </Tab>
-            <Tab text="Add">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TextField fx:id="newWord" layoutX="263.0" layoutY="59.0" promptText="Word" />
-                        <TextArea fx:id="meanOfNewWord" layoutX="62.0" layoutY="100.0" prefHeight="200.0" prefWidth="589.0" promptText="Meaning" />
-                        <Button layoutX="334.0" layoutY="310.0" mnemonicParsing="false" onAction="#addNewWord" text="Add">
+    <items>
+        <AnchorPane maxHeight="1.7976931348623157E308" minHeight="60.0" minWidth="0.0" prefHeight="204.0" prefWidth="762.0" style="-fx-background-color: rgba(115, 255, 255, 0.6);" SplitPane.resizableWithParent="false">
+            <children>
+                <Label alignment="CENTER" layoutX="228.0" layoutY="4.0" text="DICTIONARY" textAlignment="CENTER">
+                    <font>
+                        <Font name="Times New Roman Bold" size="37.0" />
+                    </font>
+               <textFill>
+                  <LinearGradient endX="0.7572815533980582" endY="0.6601941747572815" startX="0.7572815533980582" startY="0.49029126213592233">
+                     <stops>
+                        <Stop color="#464ec7" />
+                        <Stop color="#193222" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+                </Label>
+            <ImageView fitHeight="150.0" fitWidth="50.0" layoutX="471.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/book.png" />
+               </image>
+            </ImageView>
+            </children></AnchorPane>
+        <TabPane minHeight="400.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Dịch từ">
+                    <content>
+                        <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
+                            <items>
+                                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefHeight="160.0" prefWidth="210.0">
+                                    <children>
+                                        <TextField fx:id="wordFind" layoutX="21.0" layoutY="51.0" onKeyPressed="#keyHandle" onKeyReleased="#keyType" prefHeight="23.0" prefWidth="171.0" />
+                                        <ComboBox fx:id="selectLangFrom" blendMode="GREEN" layoutX="42.0" layoutY="14.0" prefHeight="29.0" prefWidth="130.0">
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor></ComboBox>
+                                        <ListView fx:id="listWord" layoutX="-1.0" layoutY="89.0" onMouseClicked="#selectWordSuggest" prefHeight="273.0" prefWidth="214.0" />
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane prefHeight="280.0" prefWidth="480.0">
+                                    <children>
+                                        <WebView fx:id="infoWord" layoutY="47.0" prefHeight="311.0" prefWidth="480.0" />
+                                        <Label fx:id="word" layoutX="5.0" layoutY="14.0" onMouseClicked="#speakWord" textFill="#403636">
+                                            <font>
+                                                <Font name="Times New Roman Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Button layoutX="199.0" layoutY="9.0" mnemonicParsing="false" onAction="#mark" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: rgba(255, 193, 110, 0.8);" text="To Mark">
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor>
+                                 <graphic>
+                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../image/bookmark.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                                        <Button fx:id="editWordBtn" layoutX="312.0" layoutY="9.0" mnemonicParsing="false" onAction="#editWord" style="-fx-background-color: rgba(255, 193, 110, 0.8);" text="Edit">
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor>
+                                 <graphic>
+                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../image/edit.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                                        <Button layoutX="384.0" layoutY="9.0" mnemonicParsing="false" onAction="#deleteAWordInData" style="-fx-background-color: rgba(255, 193, 110, 0.8);" text="Delete">
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor>
+                                 <graphic>
+                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../image/delete.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                                    </children>
+                                </AnchorPane>
+                            </items>
+                        </SplitPane>
+                    </content>
+                </Tab>
+                <Tab text="Dịch văn bản">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: rgba(255, 193, 110, 0.8);">
+                            <children>
+                                <TextArea fx:id="EasayStart" layoutX="14.0" layoutY="50.0" prefHeight="297.0" prefWidth="277.0" wrapText="true" AnchorPane.leftAnchor="10.0" />
+                                <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="316.0" layoutY="183.0" mnemonicParsing="false" onAction="#essayTranslate" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: rgba(122, 255, 57, 0.3);">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
                            <font>
-                              <Font size="14.0" />
+                              <Font name="System Bold Italic" size="15.0" />
                            </font>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/translate.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                                <TextArea fx:id="EasayResult" editable="false" layoutX="407.0" layoutY="50.0" prefHeight="297.0" prefWidth="277.0" wrapText="true" AnchorPane.rightAnchor="10.0" />
+                                <ComboBox fx:id="langFrom" layoutX="74.0" layoutY="11.0" prefWidth="150.0" promptText="Ngôn ngữ">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow />
+                           </effect></ComboBox>
+                                <ComboBox fx:id="langTo" layoutX="471.0" layoutY="11.0" prefWidth="150.0" promptText="Ngôn ngữ">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow />
+                           </effect></ComboBox>
+                                <Label layoutX="340.0" layoutY="124.0" onMouseClicked="#speakEssay" text="       ">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/speaker.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Label>
+                            </children>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Book Mark">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: rgba(122, 255, 57, 0.3);">
+                            <children>
+                                <ListView fx:id="listBookMark" layoutX="63.0" layoutY="15.0" onMouseClicked="#selectWordInBookMark" prefHeight="290.0" prefWidth="250.0" />
+                                <WebView fx:id="infoWordInBookMark" layoutX="386.0" layoutY="16.0" prefHeight="290.0" prefWidth="250.0" />
+                                <Button layoutX="452.0" layoutY="316.0" mnemonicParsing="false" onAction="#deleteAWordInBookMark" prefHeight="32.0" prefWidth="89.0" text="Delete" underline="true">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/delete.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
-                        <ComboBox fx:id="selectLangNewWord" layoutX="282.0" layoutY="14.0" prefWidth="150.0" promptText="Language" />
-                     </children></AnchorPane>
-              </content>
-            </Tab>
-            <Tab text="Entertainment">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="304.0" layoutY="46.0" mnemonicParsing="false" onAction="#switchToHangMan" text="Hang Man" />
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-        </tabs>
-      </TabPane>
-  </items>
+                                <Button layoutX="547.0" layoutY="316.0" mnemonicParsing="false" onAction="#deleteBookMark" prefHeight="31.0" prefWidth="116.0" text="Delete All" underline="true">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/deleteall.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                            </children>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="History">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: rgba(163, 255, 57, 0.3);">
+                            <children>
+                                <ListView fx:id="listHistory" blendMode="GREEN" layoutY="52.0" prefHeight="309.0" prefWidth="698.0" style="-fx-background-color: rgba(255, 238, 219, 0.7);" />
+                                <Button layoutX="298.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteHistory" prefHeight="31.0" prefWidth="103.0" style="-fx-background-color: rgba(255, 189, 30, 0.7);" text="Delete" underline="true">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/delete.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                            </children>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Add">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: rgba(174, 238, 219, 0.6);">
+                            <children>
+                                <TextField fx:id="newWord" layoutX="264.0" layoutY="55.0" promptText="Word" />
+                                <TextArea fx:id="meanOfNewWord" layoutX="62.0" layoutY="100.0" prefHeight="200.0" prefWidth="589.0" promptText="Meaning" />
+                                <Button blendMode="GREEN" layoutX="335.0" layoutY="309.0" mnemonicParsing="false" onAction="#addNewWord" text="Add">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/add.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                                </Button>
+                                <ComboBox fx:id="selectLangNewWord" blendMode="GREEN" layoutX="274.0" layoutY="14.0" prefWidth="150.0" promptText="Language">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor></ComboBox>
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Entertainment">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="368.0" prefWidth="697.0">
+                            <children>
+                                <ImageView fitHeight="400.0" fitWidth="805.0" layoutX="-7.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../../image/hangman.png" />
+                                    </image>
+                                </ImageView>
+                                <Button layoutX="349.0" layoutY="200.0" mnemonicParsing="false" onAction="#switchToHangMan" prefHeight="34.0" prefWidth="91.0" style="-fx-background-color: rgba(92, 143, 219, 0.6);" text="Hang Man" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </items>
 </SplitPane>
