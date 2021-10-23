@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -32,14 +34,26 @@
          </textFill>
       </Label>
       <TextArea fx:id="infoWord" layoutX="27.0" layoutY="95.0" onKeyTyped="#checkKeyType" prefHeight="211.0" prefWidth="248.0" wrapText="true" />
-      <Button layoutX="223.0" layoutY="338.0" mnemonicParsing="false" onAction="#submit" style="-fx-background-color: rgba(168, 255, 138, 1);" text="Submit">
+      <Button layoutX="208.0" layoutY="336.0" mnemonicParsing="false" onAction="#submit" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: rgba(168, 255, 138, 1);" text="Submit">
          <font>
             <Font name="Times New Roman Bold Italic" size="15.0" />
-         </font></Button>
-      <Button layoutX="325.0" layoutY="336.0" mnemonicParsing="false" onAction="#cancel" prefHeight="28.0" prefWidth="65.0" style="-fx-background-color: rgba(168, 255, 138, 1);" text="Cancel">
+         </font>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+         <effect>
+            <DropShadow color="#0000004d" />
+         </effect></Button>
+      <Button layoutX="313.0" layoutY="336.0" mnemonicParsing="false" onAction="#cancel" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: rgba(168, 255, 138, 1);" text="Cancel">
          <font>
             <Font name="Times New Roman Bold Italic" size="15.0" />
-         </font></Button>
+         </font>
+         <effect>
+            <DropShadow color="#0000004d" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></Button>
       <WebView fx:id="previewChange" layoutX="323.0" layoutY="95.0" prefHeight="211.0" prefWidth="248.0" />
    </children>
 </AnchorPane>

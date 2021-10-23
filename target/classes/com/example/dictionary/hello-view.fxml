@@ -15,6 +15,11 @@
     <items>
         <AnchorPane maxHeight="1.7976931348623157E308" minHeight="60.0" minWidth="0.0" prefHeight="204.0" prefWidth="762.0" style="-fx-background-color: rgba(115, 255, 255, 0.6);" SplitPane.resizableWithParent="false">
             <children>
+            <ImageView fitHeight="491.0" fitWidth="1408.0" layoutX="-152.0" layoutY="-64.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/sky.png" />
+               </image>
+            </ImageView>
                 <Label alignment="CENTER" layoutX="228.0" layoutY="4.0" text="DICTIONARY" textAlignment="CENTER">
                     <font>
                         <Font name="Times New Roman Bold" size="37.0" />
@@ -22,8 +27,8 @@
                <textFill>
                   <LinearGradient endX="0.7572815533980582" endY="0.6601941747572815" startX="0.7572815533980582" startY="0.49029126213592233">
                      <stops>
-                        <Stop color="#464ec7" />
-                        <Stop color="#193222" offset="1.0" />
+                        <Stop color="#352f6b" />
+                        <Stop color="#a49064" offset="1.0" />
                      </stops>
                   </LinearGradient>
                </textFill>
@@ -43,7 +48,7 @@
                                 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefHeight="160.0" prefWidth="210.0">
                                     <children>
                                         <TextField fx:id="wordFind" layoutX="21.0" layoutY="51.0" onKeyPressed="#keyHandle" onKeyReleased="#keyType" prefHeight="23.0" prefWidth="171.0" />
-                                        <ComboBox fx:id="selectLangFrom" blendMode="GREEN" layoutX="42.0" layoutY="14.0" prefHeight="29.0" prefWidth="130.0">
+                                        <ComboBox fx:id="selectLangFrom" layoutX="42.0" layoutY="14.0" prefHeight="29.0" prefWidth="130.0" style="-fx-background-color: rgba(108, 149, 249, 0.3);">
                                  <cursor>
                                     <Cursor fx:constant="CLOSED_HAND" />
                                  </cursor></ComboBox>
@@ -57,8 +62,11 @@
                                             <font>
                                                 <Font name="Times New Roman Bold" size="18.0" />
                                             </font>
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor>
                                         </Label>
-                                        <Button layoutX="199.0" layoutY="9.0" mnemonicParsing="false" onAction="#mark" prefHeight="31.0" prefWidth="105.0" style="-fx-background-color: rgba(255, 193, 110, 0.8);" text="To Mark">
+                                        <Button layoutX="231.0" layoutY="9.0" mnemonicParsing="false" onAction="#mark" style="-fx-background-color: rgba(255, 193, 110, 0.8);" text="Mark">
                                  <cursor>
                                     <Cursor fx:constant="CLOSED_HAND" />
                                  </cursor>
@@ -122,23 +130,29 @@
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor>
                            <effect>
-                              <DropShadow />
+                              <DropShadow color="#0000004d" height="18.0" radius="6.5" width="10.0" />
                            </effect></ComboBox>
                                 <ComboBox fx:id="langTo" layoutX="471.0" layoutY="11.0" prefWidth="150.0" promptText="Ngôn ngữ">
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor>
                            <effect>
-                              <DropShadow />
+                              <DropShadow color="#0000004d" height="14.0" radius="5.5" width="10.0" />
                            </effect></ComboBox>
-                                <Label layoutX="340.0" layoutY="124.0" onMouseClicked="#speakEssay" text="       ">
+                                <Label layoutX="340.0" layoutY="124.0" onMouseClicked="#speakEssay">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../image/speaker.png" />
                                  </image>
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor>
                               </ImageView>
-                           </graphic></Label>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor></Label>
                             </children>
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
@@ -150,8 +164,8 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: rgba(122, 255, 57, 0.3);">
                             <children>
-                                <ListView fx:id="listBookMark" layoutX="63.0" layoutY="15.0" onMouseClicked="#selectWordInBookMark" prefHeight="290.0" prefWidth="250.0" />
-                                <WebView fx:id="infoWordInBookMark" layoutX="386.0" layoutY="16.0" prefHeight="290.0" prefWidth="250.0" />
+                                <ListView fx:id="listBookMark" layoutX="28.0" layoutY="15.0" onMouseClicked="#selectWordInBookMark" prefHeight="290.0" prefWidth="300.0" />
+                                <WebView fx:id="infoWordInBookMark" layoutX="370.0" layoutY="15.0" prefHeight="290.0" prefWidth="300.0" />
                                 <Button layoutX="452.0" layoutY="316.0" mnemonicParsing="false" onAction="#deleteAWordInBookMark" prefHeight="32.0" prefWidth="89.0" text="Delete" underline="true">
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
@@ -178,7 +192,7 @@
                         </Button>
                             </children>
                      <cursor>
-                        <Cursor fx:constant="CLOSED_HAND" />
+                        <Cursor fx:constant="DEFAULT" />
                      </cursor></AnchorPane>
                     </content>
                 </Tab>
@@ -186,7 +200,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: rgba(163, 255, 57, 0.3);">
                             <children>
-                                <ListView fx:id="listHistory" blendMode="GREEN" layoutY="52.0" prefHeight="309.0" prefWidth="698.0" style="-fx-background-color: rgba(255, 238, 219, 0.7);" />
+                                <ListView fx:id="listHistory" blendMode="SRC_ATOP" layoutY="52.0" prefHeight="309.0" prefWidth="698.0" style="-fx-background-color: rgba(163, 255, 57, 0.3);" />
                                 <Button layoutX="298.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteHistory" prefHeight="31.0" prefWidth="103.0" style="-fx-background-color: rgba(255, 189, 30, 0.7);" text="Delete" underline="true">
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
@@ -200,7 +214,7 @@
                            </graphic></Button>
                             </children>
                      <cursor>
-                        <Cursor fx:constant="CLOSED_HAND" />
+                        <Cursor fx:constant="DEFAULT" />
                      </cursor></AnchorPane>
                     </content>
                 </Tab>
@@ -225,7 +239,7 @@
                               </ImageView>
                            </graphic>
                                 </Button>
-                                <ComboBox fx:id="selectLangNewWord" blendMode="GREEN" layoutX="274.0" layoutY="14.0" prefWidth="150.0" promptText="Language">
+                                <ComboBox fx:id="selectLangNewWord" blendMode="GREEN" layoutX="264.0" layoutY="14.0" prefWidth="150.0" promptText="Language">
                            <cursor>
                               <Cursor fx:constant="CLOSED_HAND" />
                            </cursor></ComboBox>
@@ -236,12 +250,15 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="368.0" prefWidth="697.0">
                             <children>
-                                <ImageView fitHeight="400.0" fitWidth="805.0" layoutX="-7.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="400.0" fitWidth="732.0" layoutX="-6.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../../image/hangman.png" />
+                                        <Image url="@../../../image/sky.png" />
                                     </image>
                                 </ImageView>
-                                <Button layoutX="349.0" layoutY="200.0" mnemonicParsing="false" onAction="#switchToHangMan" prefHeight="34.0" prefWidth="91.0" style="-fx-background-color: rgba(92, 143, 219, 0.6);" text="Hang Man" />
+                                <Button layoutX="304.0" layoutY="147.0" mnemonicParsing="false" onAction="#switchToHangMan" prefHeight="34.0" prefWidth="91.0" style="-fx-background-color: rgba(140, 255, 143, 1);" text="Hang Man">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor></Button>
                             </children>
                         </AnchorPane>
                     </content>

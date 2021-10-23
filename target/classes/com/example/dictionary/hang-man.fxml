@@ -47,7 +47,7 @@
                <font>
                   <Font name="System Bold" size="20.0" />
                </font></Button>
-            <Button layoutX="239.0" layoutY="139.0" mnemonicParsing="false" onAction="#btnPlayWithAI" prefHeight="45.0" prefWidth="221.0" text="Play With AI">
+            <Button layoutX="239.0" layoutY="139.0" mnemonicParsing="false" onAction="#btnPlayWithAI" prefHeight="45.0" prefWidth="221.0" stylesheets="@../../../style/dic.css" text="Play With AI">
                <cursor>
                   <Cursor fx:constant="CLOSED_HAND" />
                </cursor>
