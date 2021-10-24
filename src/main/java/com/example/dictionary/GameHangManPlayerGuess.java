@@ -57,16 +57,17 @@ public class GameHangManPlayerGuess {
         return len == answer.length();
     }
 
-    public void getSuggestWord() {
+    public String getSuggestWord() {
         if (score >= 100) {
             for (int i = 0; i < answer.length(); i++) {
                 if (answer.charAt(i) != gWord.charAt(i * 2)) {
                     score -= 200;
-                    check(answer.charAt(i));
-                    return;
+                    //check(answer.charAt(i));
+                    return answer.charAt(i) + "";
                 }
             }
         }
+        return null;
     }
 
 

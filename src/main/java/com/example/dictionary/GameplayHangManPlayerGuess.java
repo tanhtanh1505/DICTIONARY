@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -14,6 +15,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class GameplayHangManPlayerGuess{
     @FXML
@@ -62,31 +64,40 @@ public class GameplayHangManPlayerGuess{
         }
     }
     public void checkGuessedWord(ActionEvent event) {
-        updateGame();
+        if(guessedWord.getText().length() > 0)
+            updateGame();
     }
 
     public void checkByEnter(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
-            updateGame();
+            if(guessedWord.getText().length() > 0)
+                updateGame();
         }
     }
 
     public void getSuggestWord(ActionEvent event) {
-        game.getSuggestWord();
-        guessWord.setText(game.getGuessedWord());
-        score.setText("Score: " + String.valueOf(game.getScore()));
+        guessedWord.setText(game.getSuggestWord());
+        if(guessWord.getText() != null)
+            updateGame();
     }
 
     public void exit(ActionEvent event) throws IOException {
-        //Luu diem
-        RankHangMan.add(namePlayer, game.getScore());
-        RankHangMan.Save();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Are you sure want to exit game?");
+        alert.setContentText("Click OK to confirm");
 
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("hang-man.fxml"));
-        Parent mainParent = loader.load();
-        Scene scene = new Scene(mainParent);
-        stage.setScene(scene);
+        Optional<ButtonType> option = alert.showAndWait();
+        if (option.get() == ButtonType.OK) {
+            //Luu diem
+            RankHangMan.add(namePlayer, game.getScore());
+            RankHangMan.Save();
+
+            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("hang-man.fxml"));
+            Parent mainParent = loader.load();
+            Scene scene = new Scene(mainParent);
+            stage.setScene(scene);
+        }
     }
 }

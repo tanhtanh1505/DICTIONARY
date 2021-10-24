@@ -36,7 +36,13 @@ public class GameplayHangmanAIGuess {
         listWordGuessed.setText(game.getPreviousGuesses());
         mask.setText(defaultMask);
 
-        if(game.getStatus() == 2){
+        if(game.getStatus() == 1){
+            Alert alError = new Alert(Alert.AlertType.INFORMATION);
+            alError.setContentText("I can't guess continue, hang me :(");
+            alError.setHeaderText("Ohhh!!");
+            alError.show();
+        }
+        else if(game.getStatus() == 2){
             Alert alError = new Alert(Alert.AlertType.INFORMATION);
             alError.setContentText("Your word is " + game.getSecretWord().toUpperCase());
             alError.setHeaderText("I WIN!!");
@@ -50,24 +56,22 @@ public class GameplayHangmanAIGuess {
         }
     }
 
-    public void agree(ActionEvent event) {
+    public void solve(){
         char guessa = game.getNextGuess();
         if (guessa == 0) {
-            guess.setText("I give up :(");
+            game.setStatus(1);
         }
         String answerMask = mask.getText();
         game.update(guessa, answerMask);
         render(guessa);
     }
 
+    public void agree(ActionEvent event) {
+        solve();
+    }
+
     public void disagree(ActionEvent event) {
-        char guessa = game.getNextGuess();
-        if (guessa == 0) {
-            guess.setText("I give up :(");
-        }
-        String answerMask = mask.getText();
-        game.update(guessa, answerMask);
-        render(guessa);
+        solve();
     }
 
     public void exit(ActionEvent event) throws IOException {

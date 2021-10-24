@@ -105,6 +105,16 @@
                   </AnchorPane>
               </content>
             </Tab>
+            <Tab text="Setting">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="232.0" layoutY="193.0" mnemonicParsing="false" onAction="#reset" prefHeight="55.0" prefWidth="234.0" text="Reset" />
+                        <Button layoutX="233.0" layoutY="116.0" mnemonicParsing="false" onAction="#restoreDatabase" prefHeight="54.0" prefWidth="232.0" text="Restore database" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
   </items>

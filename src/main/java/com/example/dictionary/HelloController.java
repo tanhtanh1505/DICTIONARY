@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
@@ -67,7 +68,6 @@ public class HelloController implements Initializable {
     //Khoi tao du lieu
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        InitData.loadData();
         BookMark.load();
         History.load();
 
@@ -195,8 +195,15 @@ public class HelloController implements Initializable {
     }
 
     public void deleteAWordInData(ActionEvent event) {
-        InitData.removeWord(listWord.getSelectionModel().getSelectedItem(), selectLangFrom.getValue());
-        listWord.getItems().remove(listWord.getSelectionModel().getSelectedIndex());
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Are you sure want to delete this word?");
+        alert.setContentText("Click OK to confirm");
+
+        Optional<ButtonType> option = alert.showAndWait();
+        if (option.get() == ButtonType.OK) {
+            InitData.removeWord(listWord.getSelectionModel().getSelectedItem(), selectLangFrom.getValue());
+            listWord.getItems().remove(listWord.getSelectionModel().getSelectedIndex());
+        }
     }
 
     //Game
@@ -207,5 +214,41 @@ public class HelloController implements Initializable {
         Parent eWordParent = loader.load();
         Scene scene = new Scene(eWordParent);
         stage.setScene(scene);
+    }
+
+    //Setting
+    public void restoreDatabase(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Reset Data");
+        alert.setHeaderText("Are you sure want to reset database?");
+        alert.setContentText("Click OK to confirm");
+
+        Optional<ButtonType> option = alert.showAndWait();
+        if (option.get() == ButtonType.OK) {
+            InitData.reset(true);
+        }
+    }
+
+    public void reset(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Reset Data");
+        alert.setHeaderText("Are you sure want to reset all data?");
+        alert.setContentText("Click OK to confirm");
+
+        Optional<ButtonType> option = alert.showAndWait();
+        if (option.get() == ButtonType.OK) {
+            InitData.reset(false);
+            History.deleteAll();
+            BookMark.deleteAll();
+            RankHangMan.deleteAll();
+
+            Alert al = new Alert(Alert.AlertType.INFORMATION);
+            al.setHeaderText("RESET SUCCESS!!");
+            al.setContentText("Reload your application");
+            al.showAndWait();
+
+            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage.close();
+        }
     }
 }

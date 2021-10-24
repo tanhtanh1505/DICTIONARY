@@ -12,7 +12,7 @@ public class RankHangMan {
     private static ArrayList<Integer> listScore = new ArrayList<>();
     private static HashSet<String> listRank = new HashSet<>();
 
-    private static final String fileName = "./data/Rank.txt";
+    private static final String fileName = ".\\data\\Rank.txt";
 
     public static void load() {
         try {
@@ -69,5 +69,11 @@ public class RankHangMan {
         catch (Exception e){
             System.out.println("Error save file rank!");
         }
+    }
+
+    public static void deleteAll(){
+        listName.clear();
+        listScore.clear();
+        listRank.clear();
     }
 }

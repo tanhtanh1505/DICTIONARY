@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.FirstView">
+   <children>
+      <ProgressBar fx:id="progressBar" layoutX="200.0" layoutY="270.0" prefWidth="200.0" progress="0.0" />
+      <Button layoutX="275.0" layoutY="331.0" mnemonicParsing="false" onAction="#start" text="Start" />
+   </children>
+</AnchorPane>

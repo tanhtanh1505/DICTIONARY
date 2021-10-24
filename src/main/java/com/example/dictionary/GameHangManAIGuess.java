@@ -28,15 +28,6 @@ public class GameHangManAIGuess {
             remainingChars.add(c);
     }
 
-    public void render()
-    {
-        System.out.println("\nIncorrect guess = " + incorrectGuess
-                + "   previous guesses = ");
-        for (char c : previousGuesses)
-            System.out.print(c);
-        System.out.println("   secretWord = " + secretWord);
-    }
-
     public boolean isAllDash(String s)
     {
         for (int i = 0; i < s.length(); i++)
@@ -133,9 +124,6 @@ public class GameHangManAIGuess {
 
     public void update(char guess, String mask)
     {
-//        if (!isGoodMask(guess, mask))
-//            System.out.println("mistake entering answer");
-
         previousGuesses.add(guess);
         if (isAllDash(mask)) {
             incorrectGuess ++;
@@ -192,6 +180,10 @@ public class GameHangManAIGuess {
             res.append(", " + s);
         }
         return res.toString();
+    }
+
+    public void setStatus(int s){
+        status = s;
     }
 
     public int getStatus(){

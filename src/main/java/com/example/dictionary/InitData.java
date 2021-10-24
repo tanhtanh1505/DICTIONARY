@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 
 public class InitData {
     private static HashMap<String, String> EVdata = new HashMap<>(); //tu - nghia
@@ -18,11 +19,11 @@ public class InitData {
     private static ArrayList<String> VEkeys = new ArrayList<>();
 
     public static void loadData(){
-        load("./data/E_V/E_V.txt", EVdata, EVkeys);
-        load("./data/V_E/V_E.txt", VEdata, VEkeys);
+        loadZipFile(".\\data\\E_V.zip", EVdata, EVkeys);
+        loadZipFile(".\\data\\V_E.zip", VEdata, VEkeys);
     }
 
-    public static void loadZipFile(String path, HashMap<String, String> Tdata, ArrayList<String> Tkeys){
+    public static boolean loadZipFile(String path, HashMap<String, String> Tdata, ArrayList<String> Tkeys){
         try{
             FileInputStream file = new FileInputStream(path);
             ZipInputStream zipStream = new ZipInputStream(file);
@@ -45,11 +46,11 @@ public class InitData {
             }
             reader.close();
             System.out.println("Number Words from " + path + " : " + wordsNum );
+
+            return true;
         }
         catch (Exception e){
-            Alert error = new Alert(Alert.AlertType.ERROR);
-            error.setContentText(e.getMessage());
-            error.show();
+            return false;
         }
 
     }
@@ -105,7 +106,10 @@ public class InitData {
             VEdata.put(word, mean);
             VEkeys.add(word);
         }
-        System.out.println("Added new word!");
+        Alert al = new Alert(Alert.AlertType.INFORMATION);
+        al.setHeaderText("Add word successfully!");
+        al.setContentText("You added new word: '" + word.toUpperCase() + "' into " + lang + " database");
+        al.show();
     }
 
     public static void editWord(String word, String mean, String lang){
@@ -121,26 +125,33 @@ public class InitData {
     public static void removeWord(String word, String lang){
         if(lang.equals(Language.ENGLISH) || lang.equals("ENGLISH")){
             EVdata.remove(word);
-            if(EVkeys.remove(word)){
-                System.out.println("Removed!");
-            }
+            EVkeys.remove(word);
         }
         else if(lang.equals(Language.VIETNAMESE) || lang.equals("VIETNAMESE")){
             VEdata.remove(word);
-            if(VEkeys.remove(word)){
-                System.out.println("Removed!");
-            }
+            VEkeys.remove(word);
+        }
+        else{
+            Alert al = new Alert(Alert.AlertType.INFORMATION);
+            al.setHeaderText("Error save file!!");
+            al.show();
         }
     }
 
     public static void SaveFile(String path, HashMap<String, String> TData){
         try {
-            PrintWriter writer = new PrintWriter(path, "UTF-8");
+            FileOutputStream file = new FileOutputStream(path);
+            ZipOutputStream zipStream = new ZipOutputStream(file);
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(zipStream,"utf-8"));
+            zipStream.putNextEntry(new ZipEntry("E_V.txt"));
+
             for (Map.Entry<String, String> item : TData.entrySet()) {
-                writer.println(item.getKey() + item.getValue());
+                writer.write(item.getKey());
+                writer.write(item.getValue());
+                writer.newLine();
             }
+
             writer.close();
-            //System.out.println("Data Saved!" + path);
         }
         catch (Exception e){
             System.out.println("Error save file data!");
@@ -148,7 +159,31 @@ public class InitData {
     }
 
     public static void Save(){
-        SaveFile("./data/E_V/E_V.txt", EVdata);
-        SaveFile("./data/V_E/V_E.txt", VEdata);
+        SaveFile(".\\data\\E_V.zip", EVdata);
+        SaveFile(".\\data\\V_E.zip", VEdata);
+    }
+
+    public static void reset(boolean showAlert){
+        //true: hien thong bao
+        //false: ko hien thong bao
+        EVdata.clear();
+        VEdata.clear();
+        EVkeys.clear();
+        VEkeys.clear();
+        if(loadZipFile(".\\data\\Back up\\E_V.zip", EVdata, EVkeys)
+        && loadZipFile(".\\data\\Back up\\V_E.zip", VEdata, VEkeys)){
+            if(showAlert){
+                Alert al = new Alert(Alert.AlertType.INFORMATION);
+                al.setHeaderText("RESET SUCCESS!!");
+                al.setContentText("All data is restore");
+                al.show();
+            }
+        }
+        else {
+            Alert al = new Alert(Alert.AlertType.INFORMATION);
+            al.setHeaderText("RESET FAILL!!");
+            al.setContentText("Something went wrong :(");
+            al.show();
+        }
     }
 }
