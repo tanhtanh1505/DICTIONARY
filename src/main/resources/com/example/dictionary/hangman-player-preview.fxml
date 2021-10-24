@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(133, 234, 255, 0.8);" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.HangmanPlayerPreview">
+   <children>
+      <Label layoutX="150.0" layoutY="77.0" text="Tell me your name!">
+         <font>
+            <Font name="Times New Roman Bold" size="31.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.5145631067961165" endY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="#d7612a" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <TextField fx:id="namePlayer" layoutX="206.0" layoutY="187.0" />
+      <Button layoutX="235.0" layoutY="257.0" mnemonicParsing="false" onAction="#letGo" prefHeight="31.0" prefWidth="91.0" text="Let's go!!!">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></Button>
+   </children>
+</AnchorPane>

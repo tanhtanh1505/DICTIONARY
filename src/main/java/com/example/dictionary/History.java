@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class History {
     private static ArrayList<String> listHistory = new ArrayList<>();
@@ -45,7 +44,7 @@ public class History {
                 writer.println(s);
             }
             writer.close();
-            System.out.println("History Saved!");
+            //System.out.println("History Saved!");
         }
         catch (Exception e){
             System.out.println("Error save file history!");

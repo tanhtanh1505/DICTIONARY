@@ -1,7 +1,9 @@
 package com.example.dictionary;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.HashSet;
 
 public class BookMark {
@@ -47,7 +49,7 @@ public class BookMark {
                 writer.println(s);
             }
             writer.close();
-            System.out.println("Bookmark Saved!");
+            //System.out.println("Bookmark Saved!");
         }
         catch (Exception e){
             System.out.println("Error save file bookmark!");

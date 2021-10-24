@@ -20,7 +20,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="594.0" style="-fx-background-color: rgba(254, 203, 138, 0.6);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.EditWordController">
    <children>
-      <Label fx:id="word" layoutX="245.0" layoutY="26.0" text="Word">
+      <Label fx:id="word" layoutX="245.0" layoutY="28.0" text="Word" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="42.0" />
          </font>

@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 public class HangMan implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        RankHangMan.load();
     }
 
     public void switchScene(ActionEvent event, String s) throws IOException {
@@ -27,11 +28,15 @@ public class HangMan implements Initializable {
     }
 
     public void btnStart(ActionEvent event) throws IOException {
-        switchScene(event,"gameplay-hangman.fxml");
+        switchScene(event,"hangman-player-preview.fxml");
     }
 
     public void btnPlayWithAI(ActionEvent event) throws IOException {
         switchScene(event,"hangman-withAi-perview.fxml");
+    }
+
+    public void btnScore(ActionEvent event) throws IOException {
+        switchScene(event, "hangman-score.fxml");
     }
 
     public void btnExit(ActionEvent event) throws IOException {

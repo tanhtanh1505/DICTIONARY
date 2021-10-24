@@ -140,7 +140,7 @@ public class InitData {
                 writer.println(item.getKey() + item.getValue());
             }
             writer.close();
-            System.out.println("Data Saved!" + path);
+            //System.out.println("Data Saved!" + path);
         }
         catch (Exception e){
             System.out.println("Error save file data!");

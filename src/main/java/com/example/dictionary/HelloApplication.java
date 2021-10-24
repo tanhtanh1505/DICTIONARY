@@ -28,7 +28,7 @@ public class HelloApplication extends Application {
         BookMark.Save();
         History.Save();
         InitData.Save();
-        System.out.println("Stopped");
+        System.out.println("Stopped!");
     }
     public static void main(String[] args) {
         launch();

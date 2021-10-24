@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.GameplayHangManPlayerGuess">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="783.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../image/guess.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="timecounter" layoutX="566.0" layoutY="35.0" text="Time: ">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="guessedWord" layoutX="33.0" layoutY="335.0" onKeyPressed="#checkByEnter" prefHeight="21.0" prefWidth="142.0" promptText="Enter a character" />
+      <Button layoutX="36.0" layoutY="390.0" mnemonicParsing="false" onAction="#checkGuessedWord" style="-fx-background-color: rgba(242, 143, 132, 0.9);" text="Check">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <effect>
+            <DropShadow color="#0000004d" />
+         </effect></Button>
+      <Button layoutX="490.0" layoutY="390.0" mnemonicParsing="false" onAction="#getSuggestWord" prefHeight="31.0" prefWidth="83.0" style="-fx-background-color: rgba(242, 143, 132, 0.9);" text="Suggest">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <effect>
+            <DropShadow color="#0000004d" />
+         </effect></Button>
+      <Label fx:id="score" layoutX="33.0" layoutY="38.0" text="Score:">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="guessWord" layoutX="40.0" layoutY="229.0" text="Label">
+         <font>
+            <Font name="Times New Roman Bold" size="36.0" />
+         </font></Label>
+      <Label fx:id="lives" layoutX="333.0" layoutY="41.0" text="Label">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font></Label>
+      <Button layoutX="605.0" layoutY="390.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: rgba(242, 143, 132, 0.9);" text="Exit">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <effect>
+            <DropShadow color="#0000004d" />
+         </effect></Button>
+   </children>
+</AnchorPane>
