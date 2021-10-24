@@ -11,7 +11,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        final int width = 700, height = 500;
+        final int width = 1280, height = 800;
         Scene scene = new Scene(fxmlLoader.load(), height, width);
         stage.setMinHeight(height);
         stage.setMinWidth(width);

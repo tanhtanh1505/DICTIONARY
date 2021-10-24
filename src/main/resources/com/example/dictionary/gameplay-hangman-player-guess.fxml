@@ -14,7 +14,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="guessedWord" layoutX="33.0" layoutY="335.0" onKeyPressed="#checkByEnter" prefHeight="21.0" prefWidth="142.0" promptText="Enter a character" />
+      <TextField fx:id="guessedWord" layoutX="33.0" layoutY="335.0" onKeyPressed="#checkByEnter" prefHeight="21.0" prefWidth="142.0" promptText="Enter a character ..." />
       <Button layoutX="36.0" layoutY="390.0" mnemonicParsing="false" onAction="#checkGuessedWord" text="Check" />
       <Button layoutX="483.0" layoutY="432.0" mnemonicParsing="false" onAction="#getSuggestWord" prefHeight="31.0" prefWidth="83.0" text="Suggest" />
       <Label fx:id="score" layoutX="33.0" layoutY="38.0" text="Score:">

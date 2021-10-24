@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.HelloController">
+   <children>
+      <SplitPane dividerPositions="0.41729323308270677" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="134.0" prefWidth="598.0" style="-fx-background-color: #312a60;">
+               <children>
+                  <AnchorPane layoutX="32.0" layoutY="27.0" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-32.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="222.5901641845703" AnchorPane.topAnchor="32.0">
+                     <image>
+                        <Image url="@../../../../java/image/book.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="113.0" layoutY="-25.0" text="Super&#10;Dictionary" textAlignment="CENTER" textFill="#fffefe" AnchorPane.bottomAnchor="165.0" AnchorPane.topAnchor="-25.0">
+                     <font>
+                        <Font name="Arial Narrow Italic" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="477.0" layoutY="31.0" text="Welcome to Super Dictionary" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Narrow" size="50.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="683.0" layoutY="212.0" text="Let's go!" textFill="#f5f4f4">
+                     <font>
+                        <Font name="Cambria Italic" size="30.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="673.0" layoutY="126.0" mnemonicParsing="false" onAction="#start" prefHeight="58.0" prefWidth="126.0" style="-fx-background-color: #CD853F;" text="       Start" textAlignment="RIGHT" textFill="#fcf9f9">
+                     <font>
+                        <Font name="Cambria Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="38.0" fitWidth="59.0" layoutX="683.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../java/image/iconFire.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="103.0" fitWidth="132.0" layoutX="230.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../java/image/book.gif" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1008.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../java/image/anh3.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="168.0" prefWidth="598.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="120.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="72.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="434.0" fitWidth="431.0" layoutX="84.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../java/image/ảnh1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="364.0" fitWidth="431.0" layoutX="592.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../java/image/ảnh2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="163.0" fitWidth="187.0" layoutX="1073.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../java/image/start.gif" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

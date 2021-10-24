@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.web.*?>
 <?import javafx.scene.*?>
 <?import java.lang.*?>
@@ -7,100 +8,160 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.HelloController">
+<SplitPane dividerPositions="0.19095477386934673" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="800.0" prefWidth="1280.0" style="-fx-border-color: #F8F8FF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.HelloController">
   <items>
-    <AnchorPane maxHeight="1.7976931348623157E308" minHeight="60.0" minWidth="0.0" prefHeight="80.0" prefWidth="598.0" SplitPane.resizableWithParent="false">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="177.0" prefWidth="1280.0" style="-fx-border-color: #F8F8FF; -fx-background-color: #312a60;" SplitPane.resizableWithParent="false">
          <children>
-            <Label alignment="CENTER" layoutX="263.0" layoutY="14.0" text="DICTIONARY" textAlignment="CENTER">
+            <Label alignment="CENTER" layoutX="543.0" layoutY="70.0" prefHeight="38.0" prefWidth="195.0" text="DICTIONARY" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman Bold" size="26.0" />
+                  <Font name="Arial Narrow Italic" size="32.0" />
                </font>
             </Label>
          </children></AnchorPane>
-      <TabPane minHeight="400.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane style="-fx-border-color: #312a60;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Dịch từ">
+          <Tab style="-fx-background-color: #CD853F;" text="Dịch từ">
                <content>
-                  <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
+                  <SplitPane dividerPositions="0.31703470031545744" prefHeight="595.0" prefWidth="1273.0">
                     <items>
-                      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefHeight="160.0" prefWidth="210.0">
+                      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="375.0" style="-fx-border-color: #312a60; -fx-background-color: #E6E6FA;">
                            <children>
-                              <TextField fx:id="wordFind" layoutX="20.0" layoutY="59.0" onKeyPressed="#keyHandle" onKeyReleased="#keyType" prefHeight="23.0" prefWidth="171.0" />
-                              <ComboBox fx:id="selectLangFrom" layoutX="46.0" layoutY="14.0" prefHeight="29.0" prefWidth="130.0" />
-                              <ListView fx:id="listWord" layoutX="12.0" layoutY="96.0" onMouseClicked="#selectWordSuggest" prefHeight="251.0" prefWidth="187.0" />
+                              <TextField fx:id="wordFind" layoutX="75.0" layoutY="36.0" onKeyPressed="#keyHandle" onKeyReleased="#keyType" prefHeight="38.0" prefWidth="206.0" promptText="Tìm kiếm ...">
+                                 <font>
+                                    <Font name="Arial" size="12.0" />
+                                 </font></TextField>
+                              <ComboBox fx:id="selectLangFrom" layoutX="124.0" layoutY="87.0" prefHeight="29.0" prefWidth="109.0" promptText=" Ngôn ngữ" style="-fx-background-color: #B0C4DE;" />
+                              <ListView fx:id="listWord" layoutX="22.0" layoutY="141.0" onMouseClicked="#selectWordSuggest" prefHeight="410.0" prefWidth="332.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="280.0" prefWidth="480.0">
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="907.0" style="-fx-border-color: #312a60; -fx-background-color: #E6E6FA;">
                            <children>
-                              <WebView fx:id="infoWord" layoutX="6.0" layoutY="49.0" prefHeight="309.0" prefWidth="466.0" />
+                              <WebView fx:id="infoWord" layoutX="44.0" layoutY="116.0" prefHeight="435.0" prefWidth="819.0" />
                               <Label fx:id="word" layoutX="5.0" layoutY="14.0" onMouseClicked="#speakWord">
                                  <font>
                                     <Font name="Times New Roman Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="263.0" layoutY="9.0" mnemonicParsing="false" onAction="#mark" prefHeight="29.0" prefWidth="79.0" text="To Mark" />
-                              <Button fx:id="editWordBtn" layoutX="352.0" layoutY="9.0" mnemonicParsing="false" onAction="#editWord" text="Edit" />
-                              <Button layoutX="409.0" layoutY="9.0" mnemonicParsing="false" onAction="#deleteAWordInData" text="Delete" />
+                              <Button layoutX="449.0" layoutY="37.0" mnemonicParsing="false" onAction="#mark" prefHeight="38.0" prefWidth="91.0" style="-fx-background-color: #312a60;" text="Đánh dấu" textFill="#f8f4f4">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Button>
+                              <Button fx:id="editWordBtn" layoutX="594.0" layoutY="37.0" mnemonicParsing="false" onAction="#editWord" prefHeight="38.0" prefWidth="73.0" style="-fx-background-color: #312a60;" text="Sửa từ" textFill="#f2efef">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Button>
+                              <Button layoutX="718.0" layoutY="36.0" mnemonicParsing="false" onAction="#deleteAWordInData" prefHeight="38.0" prefWidth="75.0" style="-fx-background-color: #312a60;" text="Xóa từ" textFill="#f5f0f0">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Button>
+                              <Button layoutX="209.0" layoutY="63.0" mnemonicParsing="false" onAction="#speakWord" prefHeight="19.0" prefWidth="47.0" style="-fx-background-color: #FFF8DC;" text="Nghe" />
                            </children>
                         </AnchorPane>
                     </items>
                   </SplitPane>
                </content>
           </Tab>
-          <Tab text="Dịch văn bản">
+          <Tab style="-fx-background-color: #CD853F;" text="Dịch văn bản">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #E6E6FA;">
                      <children>
-                        <TextArea fx:id="EasayStart" layoutX="14.0" layoutY="50.0" prefHeight="297.0" prefWidth="277.0" wrapText="true" AnchorPane.leftAnchor="10.0" />
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="302.0" layoutY="165.0" mnemonicParsing="false" onAction="#essayTranslate" prefHeight="29.0" prefWidth="75.0" text="Dịch" />
-                        <TextArea fx:id="EasayResult" editable="false" layoutX="407.0" layoutY="50.0" prefHeight="297.0" prefWidth="277.0" wrapText="true" AnchorPane.rightAnchor="10.0" />
-                        <ComboBox fx:id="langFrom" layoutX="74.0" layoutY="11.0" prefWidth="150.0" promptText="Ngôn ngữ" />
-                        <ComboBox fx:id="langTo" layoutX="471.0" layoutY="11.0" prefWidth="150.0" promptText="Ngôn ngữ" />
-                        <Label layoutX="656.0" layoutY="27.0" onMouseClicked="#speakEssay" text="&lt;3" />
+                        <TextArea fx:id="EasayStart" layoutX="73.0" layoutY="81.0" prefHeight="468.0" prefWidth="462.0" promptText="Nhập ..." wrapText="true" AnchorPane.leftAnchor="73.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font></TextArea>
+                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="586.0" layoutY="241.0" mnemonicParsing="false" onAction="#essayTranslate" prefHeight="50.0" prefWidth="103.0" style="-fx-background-color: #312a60;" text="Dịch" textFill="#fcf9f9">
+                           <font>
+                              <Font name="Arial" size="25.0" />
+                           </font></Button>
+                        <TextArea fx:id="EasayResult" editable="false" layoutX="803.0" layoutY="80.0" prefHeight="469.0" prefWidth="462.0" wrapText="true" AnchorPane.rightAnchor="80.0" />
+                        <ComboBox fx:id="langFrom" layoutX="139.0" layoutY="22.0" prefHeight="38.0" prefWidth="189.0" promptText="Ngôn ngữ" style="-fx-background-color: #B0C4DE;" />
+                        <ComboBox fx:id="langTo" layoutX="903.0" layoutY="22.0" prefHeight="38.0" prefWidth="191.0" promptText="Ngôn ngữ" style="-fx-background-color: #B0C4DE;" />
+                        <Label layoutX="613.0" layoutY="334.0" onMouseClicked="#speakEssay" style="-fx-background-color: #F8F8FF;" text="Nghe">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Label>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Book Mark">
+            <Tab style="-fx-background-color: #CD853F;" text="Từ đánh dấu">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="386.0" prefWidth="684.0" style="-fx-background-color: #E6E6FA;">
                      <children>
-                        <ListView fx:id="listBookMark" layoutX="14.0" layoutY="17.0" onMouseClicked="#selectWordInBookMark" prefHeight="336.0" prefWidth="275.0" />
-                        <Button layoutX="612.0" layoutY="24.0" mnemonicParsing="false" onAction="#deleteAWordInBookMark" text="Delete" />
-                        <Button layoutX="601.0" layoutY="70.0" mnemonicParsing="false" onAction="#deleteBookMark" text="Delete All" />
-                        <WebView fx:id="infoWordInBookMark" layoutX="300.0" layoutY="17.0" prefHeight="335.0" prefWidth="284.0" />
-                     </children></AnchorPane>
-              </content>
-            </Tab>
-            <Tab text="History">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <ListView fx:id="listHistory" layoutX="14.0" layoutY="14.0" prefHeight="337.0" prefWidth="604.0" />
-                        <Button layoutX="627.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteHistory" text="Delete" />
-                     </children></AnchorPane>
-              </content>
-            </Tab>
-            <Tab text="Add">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TextField fx:id="newWord" layoutX="263.0" layoutY="59.0" promptText="Word" />
-                        <TextArea fx:id="meanOfNewWord" layoutX="62.0" layoutY="100.0" prefHeight="200.0" prefWidth="589.0" promptText="Meaning" />
-                        <Button layoutX="334.0" layoutY="310.0" mnemonicParsing="false" onAction="#addNewWord" text="Add">
+                        <ListView fx:id="listBookMark" layoutX="71.0" layoutY="87.0" onMouseClicked="#selectWordInBookMark" prefHeight="449.0" prefWidth="288.0" />
+                        <Button layoutX="1125.0" layoutY="114.0" mnemonicParsing="false" onAction="#deleteAWordInBookMark" style="-fx-background-color: #312a60;" text="Xóa" textFill="#fffdfd">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="20.0" />
+                           </font></Button>
+                        <Button layoutX="1098.0" layoutY="193.0" mnemonicParsing="false" onAction="#deleteBookMark" style="-fx-background-color: #312a60;" text="Xóa tất cả" textFill="#f8f4f4">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Button>
+                        <WebView fx:id="infoWordInBookMark" layoutX="567.0" layoutY="85.0" prefHeight="454.0" prefWidth="459.0" />
+                        <Label layoutX="128.0" layoutY="29.0" text="Danh sách từ">
+                           <font>
+                              <Font name="Cambria Italic" size="29.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="760.0" layoutY="27.0" text="Nghĩa">
+                           <font>
+                              <Font name="Cambria Italic" size="29.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab style="-fx-background-color: #CD853F;" text="Lịch sử">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #E6E6FA;">
+                     <children>
+                        <ListView fx:id="listHistory" layoutX="170.0" layoutY="91.0" prefHeight="454.0" prefWidth="643.0" />
+                        <Button layoutX="975.0" layoutY="91.0" mnemonicParsing="false" onAction="#deleteHistory" style="-fx-background-color: #312a60;" text="Xóa lịch sử" textFill="#f2eaea">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Button>
+                        <Label layoutX="408.0" layoutY="33.0" text="Lịch sử đã tra">
+                           <font>
+                              <Font name="Cambria Italic" size="29.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab style="-fx-background-color: #CD853F;" text="Thêm từ mới">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #E6E6FA;">
+                     <children>
+                        <TextField fx:id="newWord" layoutX="352.0" layoutY="35.0" prefHeight="38.0" prefWidth="316.0" promptText="Nhập từ ...">
+                           <font>
+                              <Font size="18.0" />
+                           </font></TextField>
+                        <TextArea fx:id="meanOfNewWord" layoutX="248.0" layoutY="110.0" prefHeight="342.0" prefWidth="739.0" promptText="Nhập nghĩa ...">
+                           <font>
+                              <Font size="17.0" />
+                           </font></TextArea>
+                        <Button layoutX="566.0" layoutY="502.0" mnemonicParsing="false" onAction="#addNewWord" style="-fx-background-color: #312a60;" text="Thêm từ" textFill="#fcf7f7">
+                           <font>
+                              <Font size="20.0" />
                            </font>
                         </Button>
-                        <ComboBox fx:id="selectLangNewWord" layoutX="282.0" layoutY="14.0" prefWidth="150.0" promptText="Language" />
+                        <ComboBox fx:id="selectLangNewWord" layoutX="690.0" layoutY="35.0" prefHeight="38.0" prefWidth="175.0" promptText="Ngôn ngữ" style="-fx-background-color: #B0C4DE;" />
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab text="Entertainment">
+            <Tab style="-fx-background-color: #CD853F;" text="Trò chơi">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #E6E6FA;">
                      <children>
-                        <Button layoutX="304.0" layoutY="46.0" mnemonicParsing="false" onAction="#switchToHangMan" text="Hang Man" />
+                        <Button layoutX="560.0" layoutY="450.0" mnemonicParsing="false" onAction="#switchToHangMan" style="-fx-background-color: #312a60;" text="Chơi" textFill="#f5eeee">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Button>
+                        <Label layoutX="497.0" layoutY="40.0" text="Game HangMan">
+                           <font>
+                              <Font name="Cambria Italic" size="29.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
               </content>

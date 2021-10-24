@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,9 +8,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.GameplayHangmanAIGuess">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url(&quot;..\..\..\..\..\..\..\..\test.jpg&quot;);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.GameplayHangmanAIGuess">
    <children>
-      <Label fx:id="secretWord" layoutX="43.0" layoutY="37.0" text="Hello">
+      <Label fx:id="secretWord" layoutX="142.0" layoutY="106.0" text="Hello">
          <font>
             <Font name="Times New Roman Bold" size="24.0" />
          </font>
