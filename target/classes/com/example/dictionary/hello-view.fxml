@@ -183,12 +183,12 @@
                                                                         <HBox prefHeight="30.0" prefWidth="208.0">
                                                                             <children>
                                                                                 <Pane prefHeight="30.0" prefWidth="8.0" />
-                                                                                <TextField fx:id="wordFind" alignment="TOP_CENTER" prefHeight="31.0" prefWidth="176.0" HBox.hgrow="ALWAYS" />
+                                                                                <TextField fx:id="wordFind" alignment="TOP_LEFT" onKeyPressed="#keyHandle" onKeyReleased="#keyType" prefHeight="31.0" prefWidth="176.0" HBox.hgrow="ALWAYS" />
                                                                                 <Pane prefHeight="30.0" prefWidth="8.0" />
                                                                             </children>
                                                                         </HBox>
                                                                         <Pane prefHeight="8.0" prefWidth="208.0" />
-                                                                        <ListView fx:id="listWord" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                                                        <ListView fx:id="listWord" onMouseClicked="#selectWordSuggest" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                                                                     </children>
                                                                 </VBox>
                                                             </children>
@@ -213,9 +213,25 @@
                                                                                         <RowConstraints maxHeight="19.599996948242186" minHeight="9.199987792968749" prefHeight="9.199987792968749" vgrow="SOMETIMES" />
                                                                                     </rowConstraints>
                                                                                     <children>
-                                                                                        <Button mnemonicParsing="false" onAction="#mark" prefHeight="26.0" prefWidth="61.0" text="Mark" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                                                        <Button fx:id="editWordBtn" mnemonicParsing="false" onAction="#editWord" prefHeight="26.0" prefWidth="64.0" text="Edit" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                                                                        <Button mnemonicParsing="false" onAction="#deleteAWordInData" prefHeight="26.0" prefWidth="62.0" text="Delete" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                                                                        <Button mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#mark" prefHeight="28.0" prefWidth="70.0" text="Mark" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                                     <graphic>
+                                                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@../../../Image/star.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                     </graphic></Button>
+                                                                                        <Button fx:id="editWordBtn" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#editWord" prefHeight="26.0" prefWidth="70.0" text="Edit" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                                     <graphic>
+                                                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@../../../Image/edit.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                     </graphic></Button>
+                                                                                        <Button mnemonicParsing="false" onAction="#deleteAWordInData" prefHeight="26.0" prefWidth="70.0" text="Delete" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                                                  <Button mnemonicParsing="false" onAction="#speakWord" text="Speak" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                                  <Label fx:id="word" GridPane.rowIndex="1" />
                                                                                     </children>
                                                                                 </GridPane>
                                                                             </children>
@@ -299,11 +315,11 @@
                                             <children>
                                                 <VBox layoutX="324.0" layoutY="149.0" prefHeight="531.2" prefWidth="699.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                     <children>
-                                                        <Pane prefHeight="45.0" prefWidth="699.0" />
-                                                        <HBox prefHeight="450.0" prefWidth="699.0" VBox.vgrow="ALWAYS">
+                                                        <Pane prefHeight="45.0" prefWidth="699.0" VBox.vgrow="ALWAYS" />
+                                                        <HBox prefHeight="382.0" prefWidth="699.0" VBox.vgrow="ALWAYS">
                                                             <children>
                                                                 <Pane prefHeight="450.0" prefWidth="15.0" />
-                                                                <ListView fx:id="listBookMark" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                                <ListView fx:id="listBookMark" onMouseClicked="#selectWordInBookMark" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                                                                 <Pane prefHeight="450.0" prefWidth="29.0" />
                                                                 <WebView fx:id="infoWordInBookMark" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                                                                 <Pane prefHeight="450.0" prefWidth="10.0" />
@@ -334,7 +350,7 @@
                                                                 <Pane prefHeight="450.0" prefWidth="0.0" HBox.hgrow="NEVER" />
                                                             </children>
                                                         </HBox>
-                                                        <Pane prefHeight="37.0" prefWidth="699.0" />
+                                                        <Pane prefHeight="37.0" prefWidth="699.0" VBox.vgrow="ALWAYS" />
                                                     </children>
                                                 </VBox>
                                             </children></AnchorPane>
@@ -349,10 +365,10 @@
                                                         <VBox layoutX="227.0" layoutY="102.0" prefHeight="531.2" prefWidth="699.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                             <children>
                                                                 <Pane prefHeight="30.0" prefWidth="699.0" />
-                                                                <HBox prefHeight="490.0" prefWidth="699.0" VBox.vgrow="ALWAYS">
+                                                                <HBox prefHeight="378.0" prefWidth="699.0">
                                                                     <children>
-                                                                        <Pane prefHeight="465.0" prefWidth="21.0" />
-                                                                        <ListView fx:id="listHistory" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                                        <Pane prefHeight="361.0" prefWidth="18.0" />
+                                                                        <ListView fx:id="listHistory" prefHeight="361.0" prefWidth="544.0" HBox.hgrow="ALWAYS" />
                                                                         <Pane prefHeight="482.0" prefWidth="17.0" />
                                                                         <VBox prefHeight="482.0" prefWidth="95.0">
                                                                             <children>
@@ -369,7 +385,7 @@
                                                                         <Pane prefHeight="482.0" prefWidth="17.0" />
                                                                     </children>
                                                                 </HBox>
-                                                                <Pane prefHeight="39.0" prefWidth="699.0" />
+                                                                <Pane prefHeight="39.0" prefWidth="699.0" VBox.vgrow="ALWAYS" />
                                                             </children>
                                                         </VBox>
                                                     </children>
@@ -384,40 +400,42 @@
                                             <children>
                                                 <VBox layoutX="232.0" layoutY="116.0" prefHeight="531.2" prefWidth="699.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                     <children>
-                                                        <Pane prefHeight="20.0" prefWidth="699.0" />
+                                                        <Pane prefHeight="30.0" prefWidth="699.0" />
                                                         <HBox prefHeight="54.0" prefWidth="699.0">
                                                             <children>
-                                                                <Pane prefHeight="54.0" prefWidth="204.0" />
+                                                                <Pane prefHeight="34.0" prefWidth="361.0" />
                                                                 <ComboBox fx:id="selectLangNewWord" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="281.0" promptText="Language" HBox.hgrow="ALWAYS" />
-                                                                <Pane prefHeight="50.0" prefWidth="208.0" />
+                                                                <Pane prefHeight="34.0" prefWidth="338.0" />
                                                             </children>
                                                         </HBox>
                                                         <HBox prefHeight="53.0" prefWidth="699.0">
                                                             <children>
-                                                                <Pane prefHeight="54.0" prefWidth="198.0" />
+                                                                <Pane prefHeight="34.0" prefWidth="258.0" />
                                                                 <TextField fx:id="newWord" alignment="CENTER" promptText="Word" HBox.hgrow="ALWAYS" />
-                                                                <Pane prefHeight="54.0" prefWidth="208.0" />
+                                                                <Pane prefHeight="34.0" prefWidth="238.0" />
                                                             </children>
                                                         </HBox>
-                                                        <HBox prefHeight="274.0" prefWidth="699.0" VBox.vgrow="ALWAYS">
+                                                        <HBox prefHeight="247.0" prefWidth="699.0" VBox.vgrow="ALWAYS">
                                                             <children>
-                                                                <Pane prefHeight="279.0" prefWidth="50.0" />
+                                                                <Pane prefHeight="255.0" prefWidth="100.0" />
                                                                 <TextArea fx:id="meanOfNewWord" prefHeight="200.0" prefWidth="200.0" promptText="Meaning" HBox.hgrow="ALWAYS" />
-                                                                <Pane prefHeight="279.0" prefWidth="50.0" />
+                                                                <Pane prefHeight="255.0" prefWidth="100.0" />
                                                             </children>
                                                         </HBox>
                                                         <Pane prefHeight="29.0" prefWidth="699.0" />
-                                                        <HBox prefHeight="20.0" prefWidth="699.0" VBox.vgrow="ALWAYS">
-                                                            <children>
-                                                                <Pane prefHeight="40.0" prefWidth="310.0" />
-                                                                <AnchorPane prefHeight="40.0" prefWidth="90.0" HBox.hgrow="ALWAYS">
-                                                                    <children>
-                                                                        <Button layoutX="21.0" layoutY="7.0" mnemonicParsing="false" onAction="#addNewWord" prefHeight="56.0" prefWidth="96.0" text="Add" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                                    </children>
-                                                                </AnchorPane>
-                                                                <Pane prefHeight="40.0" prefWidth="322.0" />
-                                                            </children>
-                                                        </HBox>
+                                          <GridPane>
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="377.00001525878906" minWidth="10.0" prefWidth="276.6000122070312" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="301.0" minWidth="10.0" prefWidth="181.60001220703128" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.0000366210937" minWidth="10.0" prefWidth="241.5999877929687" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Button mnemonicParsing="false" onAction="#addNewWord" prefHeight="26.0" prefWidth="73.0" text="Add" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                                             </children>
+                                          </GridPane>
                                                         <Pane prefHeight="44.0" prefWidth="699.0" />
                                                     </children>
                                                 </VBox>
@@ -434,7 +452,7 @@
                                                         <Image url="@../../../Image/background1.png" />
                                                     </image>
                                                 </ImageView>
-                                                <Button layoutX="221.0" layoutY="371.0" mnemonicParsing="false" onAction="#switchToHangMan" prefHeight="55.0" prefWidth="152.0" text="Hangman" />
+                                                <Button layoutX="222.0" layoutY="268.0" mnemonicParsing="false" onAction="#switchToHangMan" prefHeight="55.0" prefWidth="152.0" text="Hangman" />
                                             </children>
                                         </AnchorPane>
                                     </content>
@@ -451,7 +469,7 @@
                                                                 <Pane prefHeight="54.0" prefWidth="290.0" HBox.hgrow="ALWAYS" />
                                                                 <AnchorPane prefHeight="46.0" prefWidth="184.0">
                                                                     <children>
-                                                                        <Button layoutX="48.0" layoutY="20.0" mnemonicParsing="false" prefHeight="46.4" prefWidth="162.4" text="Restore database" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                        <Button layoutX="48.0" layoutY="20.0" mnemonicParsing="false" onAction="#restoreDatabase" prefHeight="46.4" prefWidth="162.4" text="Restore database" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                                     </children>
                                                                 </AnchorPane>
                                                                 <Pane prefHeight="39.0" prefWidth="290.0" HBox.hgrow="ALWAYS" />
@@ -463,7 +481,7 @@
                                                                 <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                                                                 <AnchorPane prefHeight="76.0" prefWidth="162.0">
                                                                     <children>
-                                                                        <Button layoutX="55.0" layoutY="11.0" mnemonicParsing="false" prefHeight="47.2" prefWidth="162.4" text="Reset" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                        <Button layoutX="55.0" layoutY="11.0" mnemonicParsing="false" onAction="#reset" prefHeight="47.2" prefWidth="162.4" text="Reset" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                                     </children>
                                                                 </AnchorPane>
                                                                 <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
