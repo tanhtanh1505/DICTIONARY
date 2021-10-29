@@ -1,122 +1,627 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.web.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.*?>
+<?import javafx.scene.paint.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.HelloController">
-  <items>
-    <AnchorPane maxHeight="1.7976931348623157E308" minHeight="60.0" minWidth="0.0" prefHeight="80.0" prefWidth="598.0" SplitPane.resizableWithParent="false">
-         <children>
-            <Label alignment="CENTER" layoutX="263.0" layoutY="14.0" text="DICTIONARY" textAlignment="CENTER">
-               <font>
-                  <Font name="Times New Roman Bold" size="26.0" />
-               </font>
-            </Label>
-         </children></AnchorPane>
-      <TabPane minHeight="400.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Dịch từ">
-               <content>
-                  <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
-                    <items>
-                      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefHeight="160.0" prefWidth="210.0">
-                           <children>
-                              <TextField fx:id="wordFind" layoutX="20.0" layoutY="59.0" onKeyPressed="#keyHandle" onKeyReleased="#keyType" prefHeight="23.0" prefWidth="171.0" />
-                              <ComboBox fx:id="selectLangFrom" layoutX="46.0" layoutY="14.0" prefHeight="29.0" prefWidth="130.0" />
-                              <ListView fx:id="listWord" layoutX="12.0" layoutY="96.0" onMouseClicked="#selectWordSuggest" prefHeight="251.0" prefWidth="187.0" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="280.0" prefWidth="480.0">
-                           <children>
-                              <WebView fx:id="infoWord" layoutX="6.0" layoutY="49.0" prefHeight="309.0" prefWidth="466.0" />
-                              <Label fx:id="word" layoutX="5.0" layoutY="14.0">
-                                 <font>
-                                    <Font name="Times New Roman Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Button layoutX="263.0" layoutY="9.0" mnemonicParsing="false" onAction="#mark" prefHeight="29.0" prefWidth="79.0" text="To Mark" />
-                              <Button fx:id="editWordBtn" layoutX="352.0" layoutY="9.0" mnemonicParsing="false" onAction="#editWord" text="Edit" />
-                              <Button layoutX="409.0" layoutY="9.0" mnemonicParsing="false" onAction="#deleteAWordInData" text="Delete" />
-                              <Button layoutX="192.0" layoutY="9.0" mnemonicParsing="false" onAction="#speakWord" text="Speak" />
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
-               </content>
-          </Tab>
-          <Tab text="Dịch văn bản">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TextArea fx:id="EasayStart" layoutX="14.0" layoutY="50.0" prefHeight="297.0" prefWidth="277.0" wrapText="true" AnchorPane.leftAnchor="10.0" />
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="302.0" layoutY="165.0" mnemonicParsing="false" onAction="#essayTranslate" prefHeight="29.0" prefWidth="75.0" text="Dịch" />
-                        <TextArea fx:id="EasayResult" editable="false" layoutX="407.0" layoutY="50.0" prefHeight="297.0" prefWidth="277.0" wrapText="true" AnchorPane.rightAnchor="10.0" />
-                        <ComboBox fx:id="langFrom" layoutX="74.0" layoutY="11.0" prefWidth="150.0" promptText="Ngôn ngữ" />
-                        <ComboBox fx:id="langTo" layoutX="471.0" layoutY="11.0" prefWidth="150.0" promptText="Ngôn ngữ" />
-                        <Label layoutX="656.0" layoutY="27.0" onMouseClicked="#speakEssay" text="&lt;3" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-            <Tab text="Book Mark">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <ListView fx:id="listBookMark" layoutX="14.0" layoutY="17.0" onMouseClicked="#selectWordInBookMark" prefHeight="336.0" prefWidth="275.0" />
-                        <Button layoutX="612.0" layoutY="24.0" mnemonicParsing="false" onAction="#deleteAWordInBookMark" text="Delete" />
-                        <Button layoutX="601.0" layoutY="70.0" mnemonicParsing="false" onAction="#deleteBookMark" text="Delete All" />
-                        <WebView fx:id="infoWordInBookMark" layoutX="300.0" layoutY="17.0" prefHeight="335.0" prefWidth="284.0" />
-                     </children></AnchorPane>
-              </content>
-            </Tab>
-            <Tab text="History">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <ListView fx:id="listHistory" layoutX="14.0" layoutY="14.0" prefHeight="337.0" prefWidth="604.0" />
-                        <Button layoutX="627.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteHistory" text="Delete" />
-                     </children></AnchorPane>
-              </content>
-            </Tab>
-            <Tab text="Add">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TextField fx:id="newWord" layoutX="263.0" layoutY="59.0" promptText="Word" />
-                        <TextArea fx:id="meanOfNewWord" layoutX="62.0" layoutY="100.0" prefHeight="200.0" prefWidth="589.0" promptText="Meaning" />
-                        <Button layoutX="334.0" layoutY="310.0" mnemonicParsing="false" onAction="#addNewWord" text="Add">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Button>
-                        <ComboBox fx:id="selectLangNewWord" layoutX="282.0" layoutY="14.0" prefWidth="150.0" promptText="Language" />
-                     </children></AnchorPane>
-              </content>
-            </Tab>
-            <Tab text="Entertainment">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="304.0" layoutY="46.0" mnemonicParsing="false" onAction="#switchToHangMan" text="Hang Man" />
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-            <Tab text="Setting">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="232.0" layoutY="193.0" mnemonicParsing="false" onAction="#reset" prefHeight="55.0" prefWidth="234.0" text="Reset" />
-                        <Button layoutX="233.0" layoutY="116.0" mnemonicParsing="false" onAction="#restoreDatabase" prefHeight="54.0" prefWidth="232.0" text="Restore database" />
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-        </tabs>
-      </TabPane>
-  </items>
-</SplitPane>
+<!--<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.HelloController">-->
+<!--  <items>-->
+<!--    <AnchorPane maxHeight="1.7976931348623157E308" minHeight="60.0" minWidth="0.0" prefHeight="80.0" prefWidth="598.0" SplitPane.resizableWithParent="false">-->
+<!--         <children>-->
+<!--            <Label alignment="CENTER" layoutX="263.0" layoutY="14.0" text="DICTIONARY" textAlignment="CENTER">-->
+<!--               <font>-->
+<!--                  <Font name="Times New Roman Bold" size="26.0" />-->
+<!--               </font>-->
+<!--            </Label>-->
+<!--         </children></AnchorPane>-->
+<!--      <TabPane minHeight="400.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">-->
+<!--        <tabs>-->
+<!--          <Tab text="Dịch từ">-->
+<!--               <content>-->
+<!--                  <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">-->
+<!--                    <items>-->
+<!--                      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefHeight="160.0" prefWidth="210.0">-->
+<!--                           <children>-->
+<!--                              <TextField fx:id="wordFind" layoutX="20.0" layoutY="59.0" onKeyPressed="#keyHandle" onKeyReleased="#keyType" prefHeight="23.0" prefWidth="171.0" />-->
+<!--                              <ComboBox fx:id="selectLangFrom" layoutX="46.0" layoutY="14.0" prefHeight="29.0" prefWidth="130.0" />-->
+<!--                              <ListView fx:id="listWord" layoutX="12.0" layoutY="96.0" onMouseClicked="#selectWordSuggest" prefHeight="251.0" prefWidth="187.0" />-->
+<!--                           </children>-->
+<!--                        </AnchorPane>-->
+<!--                        <AnchorPane prefHeight="280.0" prefWidth="480.0">-->
+<!--                           <children>-->
+<!--                              <WebView fx:id="infoWord" layoutX="6.0" layoutY="49.0" prefHeight="309.0" prefWidth="466.0" />-->
+<!--                              <Label fx:id="word" layoutX="5.0" layoutY="14.0" onMouseClicked="#speakWord">-->
+<!--                                 <font>-->
+<!--                                    <Font name="Times New Roman Bold" size="18.0" />-->
+<!--                                 </font>-->
+<!--                              </Label>-->
+<!--                              <Button layoutX="263.0" layoutY="9.0" mnemonicParsing="false" onAction="#mark" prefHeight="29.0" prefWidth="79.0" text="To Mark" />-->
+<!--                              <Button fx:id="editWordBtn" layoutX="352.0" layoutY="9.0" mnemonicParsing="false" onAction="#editWord" text="Edit" />-->
+<!--                              <Button layoutX="409.0" layoutY="9.0" mnemonicParsing="false" onAction="#deleteAWordInData" text="Delete" />-->
+<!--                           </children>-->
+<!--                        </AnchorPane>-->
+<!--                    </items>-->
+<!--                  </SplitPane>-->
+<!--               </content>-->
+<!--          </Tab>-->
+<!--          <Tab text="Dịch văn bản">-->
+<!--            <content>-->
+<!--              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">-->
+<!--                     <children>-->
+<!--                        <TextArea fx:id="EasayStart" layoutX="14.0" layoutY="50.0" prefHeight="297.0" prefWidth="277.0" wrapText="true" AnchorPane.leftAnchor="10.0" />-->
+<!--                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="302.0" layoutY="165.0" mnemonicParsing="false" onAction="#essayTranslate" prefHeight="29.0" prefWidth="75.0" text="Dịch" />-->
+<!--                        <TextArea fx:id="EasayResult" editable="false" layoutX="407.0" layoutY="50.0" prefHeight="297.0" prefWidth="277.0" wrapText="true" AnchorPane.rightAnchor="10.0" />-->
+<!--                        <ComboBox fx:id="langFrom" layoutX="74.0" layoutY="11.0" prefWidth="150.0" promptText="Ngôn ngữ" />-->
+<!--                        <ComboBox fx:id="langTo" layoutX="471.0" layoutY="11.0" prefWidth="150.0" promptText="Ngôn ngữ" />-->
+<!--                        <Label layoutX="656.0" layoutY="27.0" onMouseClicked="#speakEssay" text="&lt;3" />-->
+<!--                     </children>-->
+<!--                  </AnchorPane>-->
+<!--            </content>-->
+<!--          </Tab>-->
+<!--            <Tab text="Book Mark">-->
+<!--              <content>-->
+<!--                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">-->
+<!--                     <children>-->
+<!--                        <ListView fx:id="listBookMark" layoutX="14.0" layoutY="17.0" onMouseClicked="#selectWordInBookMark" prefHeight="336.0" prefWidth="275.0" />-->
+<!--                        <Button layoutX="612.0" layoutY="24.0" mnemonicParsing="false" onAction="#deleteAWordInBookMark" text="Delete" />-->
+<!--                        <Button layoutX="601.0" layoutY="70.0" mnemonicParsing="false" onAction="#deleteBookMark" text="Delete All" />-->
+<!--                        <WebView fx:id="infoWordInBookMark" layoutX="300.0" layoutY="17.0" prefHeight="335.0" prefWidth="284.0" />-->
+<!--                     </children></AnchorPane>-->
+<!--              </content>-->
+<!--            </Tab>-->
+<!--            <Tab text="History">-->
+<!--              <content>-->
+<!--                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">-->
+<!--                     <children>-->
+<!--                        <ListView fx:id="listHistory" layoutX="14.0" layoutY="14.0" prefHeight="337.0" prefWidth="604.0" />-->
+<!--                        <Button layoutX="627.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteHistory" text="Delete" />-->
+<!--                     </children></AnchorPane>-->
+<!--              </content>-->
+<!--            </Tab>-->
+<!--            <Tab text="Add">-->
+<!--              <content>-->
+<!--                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">-->
+<!--                     <children>-->
+<!--                        <TextField fx:id="newWord" layoutX="263.0" layoutY="59.0" promptText="Word" />-->
+<!--                        <TextArea fx:id="meanOfNewWord" layoutX="62.0" layoutY="100.0" prefHeight="200.0" prefWidth="589.0" promptText="Meaning" />-->
+<!--                        <Button layoutX="334.0" layoutY="310.0" mnemonicParsing="false" onAction="#addNewWord" text="Add">-->
+<!--                           <font>-->
+<!--                              <Font size="14.0" />-->
+<!--                           </font>-->
+<!--                        </Button>-->
+<!--                        <ComboBox fx:id="selectLangNewWord" layoutX="282.0" layoutY="14.0" prefWidth="150.0" promptText="Language" />-->
+<!--                     </children></AnchorPane>-->
+<!--              </content>-->
+<!--            </Tab>-->
+<!--            <Tab text="Entertainment">-->
+<!--              <content>-->
+<!--                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">-->
+<!--                     <children>-->
+<!--                        <ImageView fitHeight="527.0" fitWidth="845.0" layoutX="-1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">-->
+<!--                           <image>-->
+<!--                              <Image url="@../../../Image/background.png" />-->
+<!--                           </image>-->
+<!--                        </ImageView>-->
+<!--                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="128.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">-->
+<!--                           <image>-->
+<!--                              <Image url="@../../../../../../../Image/5261874.png" />-->
+<!--                           </image>-->
+<!--                        </ImageView>-->
+<!--                        <Button layoutX="128.0" layoutY="156.0" mnemonicParsing="false" onAction="#switchToHangMan" prefHeight="83.0" prefWidth="150.0" text="Hang Man" />-->
+<!--                     </children>-->
+<!--                  </AnchorPane>-->
+<!--              </content>-->
+<!--            </Tab>-->
+<!--            <Tab text="Setting">-->
+<!--              <content>-->
+<!--                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">-->
+<!--                     <children>-->
+<!--                        <Button layoutX="232.0" layoutY="193.0" mnemonicParsing="false" onAction="#reset" prefHeight="55.0" prefWidth="234.0" text="Reset" />-->
+<!--                        <Button layoutX="233.0" layoutY="116.0" mnemonicParsing="false" onAction="#restoreDatabase" prefHeight="54.0" prefWidth="232.0" text="Restore database" />-->
+<!--                     </children>-->
+<!--                  </AnchorPane>-->
+<!--              </content>-->
+<!--            </Tab>-->
+<!--        </tabs>-->
+<!--      </TabPane>-->
+<!--  </items>-->
+<!--</SplitPane>-->
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.HelloController">
+    <children>
+        <SplitPane dividerPositions="0.14739304812834222" orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: rgba(154, 159, 209, 0.8);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="387.0" prefWidth="699.0">
+                    <children>
+                        <Label alignment="CENTER" prefHeight="20.0" prefWidth="699.2" style="-fx-background-color: rgba(5, 13, 86, 0.8);" text="DICTIONARY" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <font>
+                                <Font name="System Bold" size="30.0" />
+                            </font>
+                     <textFill>
+                        <LinearGradient endX="0.014563106796116505" endY="1.0">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                        </Label>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="439.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../image/book.png" />
+                     </image>
+                  </ImageView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <children>
+                        <TabPane prefHeight="559.2" prefWidth="699.2" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <tabs>
+                                <Tab style="-fx-background-color: rgba(255, 187, 88, 0.8);" text="Dịch từ">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: rgba(194, 199, 247, 0.8);">
+                                            <children>
+                                                <SplitPane dividerPositions="0.30275229357798156" layoutX="176.0" layoutY="93.0" prefHeight="532.0" prefWidth="699.2" style="-fx-background-color: rgba(194, 199, 247, 0.8);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <items>
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                            <children>
+                                                                <VBox layoutX="47.0" layoutY="101.0" prefHeight="530.4" prefWidth="208.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <children>
+                                                                        <Pane prefHeight="8.0" prefWidth="208.0" />
+                                                                        <HBox prefHeight="23.0" prefWidth="208.0">
+                                                                            <children>
+                                                                                <Pane prefHeight="36.0" prefWidth="8.0" />
+                                                                                <ComboBox fx:id="selectLangFrom" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="190.0" style="-fx-background-color: rgba(186, 224, 255, 0.8);" HBox.hgrow="ALWAYS">
+                                                               <cursor>
+                                                                  <Cursor fx:constant="CLOSED_HAND" />
+                                                               </cursor></ComboBox>
+                                                                                <Pane prefHeight="26.0" prefWidth="8.0" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <Pane prefHeight="10.0" prefWidth="208.0" />
+                                                                        <HBox prefHeight="30.0" prefWidth="208.0">
+                                                                            <children>
+                                                                                <Pane prefHeight="30.0" prefWidth="8.0" />
+                                                                                <TextField fx:id="wordFind" alignment="TOP_LEFT" onKeyPressed="#keyHandle" onKeyReleased="#keyType" prefHeight="31.0" prefWidth="176.0" HBox.hgrow="ALWAYS" />
+                                                                                <Pane prefHeight="30.0" prefWidth="8.0" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                        <Pane prefHeight="8.0" prefWidth="208.0" />
+                                                                        <ListView fx:id="listWord" onMouseClicked="#selectWordSuggest" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                            <children>
+                                                                <VBox layoutX="252.0" layoutY="132.0" prefHeight="530.4" prefWidth="484.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <children>
+                                                                        <AnchorPane prefHeight="0.0" prefWidth="484.0" VBox.vgrow="ALWAYS">
+                                                                            <children>
+                                                                                <GridPane layoutY="7.0" prefHeight="53.6" prefWidth="484.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                                    <columnConstraints>
+                                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.2" minWidth="10.0" prefWidth="146.2" />
+                                                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.19998779296878" minWidth="10.0" prefWidth="75.99996337890624" />
+                                                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.39999999999998" minWidth="10.0" prefWidth="77.60007324218748" />
+                                                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.4000244140625" minWidth="10.0" prefWidth="87.99992675781249" />
+                                                                                    </columnConstraints>
+                                                                                    <rowConstraints>
+                                                                                        <RowConstraints maxHeight="13.600012207031249" minHeight="10.0" prefHeight="10.399999999999999" vgrow="SOMETIMES" />
+                                                                                        <RowConstraints maxHeight="35.60001220703125" minHeight="10.0" prefHeight="35.60001220703125" vgrow="SOMETIMES" />
+                                                                                        <RowConstraints maxHeight="35.60001220703125" minHeight="10.0" prefHeight="35.60001220703125" vgrow="SOMETIMES" />
+                                                                  <RowConstraints maxHeight="19.599996948242186" minHeight="9.199987792968749" prefHeight="9.199987792968749" vgrow="SOMETIMES" />
+                                                                                    </rowConstraints>
+                                                                                    <children>
+                                                                                        <Button mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#mark" prefHeight="31.0" prefWidth="92.0" text="Mark" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                                     <graphic>
+                                                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@../../../image/mark.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                     </graphic>
+                                                                     <cursor>
+                                                                        <Cursor fx:constant="CLOSED_HAND" />
+                                                                     </cursor></Button>
+                                                                                        <Button fx:id="editWordBtn" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#editWord" prefHeight="26.0" prefWidth="70.0" text="Edit" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                                     <graphic>
+                                                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@../../../image/edit.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                     </graphic>
+                                                                     <cursor>
+                                                                        <Cursor fx:constant="CLOSED_HAND" />
+                                                                     </cursor></Button>
+                                                                                        <Button mnemonicParsing="false" onAction="#deleteAWordInData" prefHeight="26.0" prefWidth="70.0" text="Delete" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                                                     <graphic>
+                                                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@../../../image/delete.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                     </graphic>
+                                                                     <cursor>
+                                                                        <Cursor fx:constant="CLOSED_HAND" />
+                                                                     </cursor></Button>
+                                                                  <Button mnemonicParsing="false" onAction="#speakWord" text="Speak" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                                     <graphic>
+                                                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@../../../image/speaker2.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                     </graphic>
+                                                                     <cursor>
+                                                                        <Cursor fx:constant="CLOSED_HAND" />
+                                                                     </cursor></Button>
+                                                                  <Label fx:id="word" GridPane.rowIndex="1" />
+                                                                                    </children>
+                                                                                </GridPane>
+                                                                            </children>
+                                                                        </AnchorPane>
+                                                                        <AnchorPane prefHeight="450.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                            <children>
+                                                                                <WebView fx:id="infoWord" prefHeight="447.2" prefWidth="484.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                            </children>
+                                                                        </AnchorPane>
+                                                                    </children>
+                                                                </VBox>
+                                                            </children></AnchorPane>
+                                                    </items>
+                                                </SplitPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab style="-fx-background-color: rgba(255, 187, 88, 0.8);" text="Dịch văn bản ">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <VBox layoutX="159.0" layoutY="94.0" prefHeight="533.0" prefWidth="699.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <children>
+                                                        <Pane prefHeight="42.0" prefWidth="699.0" />
+                                                        <HBox prefHeight="26.0" prefWidth="699.0">
+                                                            <children>
+                                                                <Pane prefHeight="64.0" prefWidth="26.0" />
+                                                                <ComboBox fx:id="langFrom" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="190.0" HBox.hgrow="ALWAYS">
+                                                   <cursor>
+                                                      <Cursor fx:constant="CLOSED_HAND" />
+                                                   </cursor>
+                                                   <effect>
+                                                      <DropShadow color="#0000004c" />
+                                                   </effect></ComboBox>
+                                                                <Pane prefHeight="64.0" prefWidth="162.0" />
+                                                                <ComboBox fx:id="langTo" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="187.0" HBox.hgrow="ALWAYS">
+                                                   <cursor>
+                                                      <Cursor fx:constant="CLOSED_HAND" />
+                                                   </cursor>
+                                                   <effect>
+                                                      <DropShadow color="#0000004d" />
+                                                   </effect></ComboBox>
+                                                                <Pane prefHeight="64.0" prefWidth="0.0" />
+                                                                <Pane prefHeight="64.0" prefWidth="28.0" />
+                                                            </children>
+                                                        </HBox>
+                                                        <GridPane>
+                                                            <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            </columnConstraints>
+                                                            <rowConstraints>
+                                                                <RowConstraints />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            </rowConstraints>
+                                             <children>
+                                                                <Label alignment="TOP_RIGHT" onMouseClicked="#speakEssay" prefHeight="40.0" prefWidth="46.0" text="&lt;3" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                   <cursor>
+                                                      <Cursor fx:constant="CLOSED_HAND" />
+                                                   </cursor>
+                                                </Label>
+                                                <Pane prefHeight="21.0" prefWidth="56.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                             </children>
+                                                        </GridPane>
+                                                        <HBox prefHeight="300.0" prefWidth="699.0" VBox.vgrow="ALWAYS">
+                                                            <children>
+                                                                <Pane prefHeight="400.0" prefWidth="26.0" />
+                                                                <TextArea fx:id="EasayStart" prefHeight="200.0" prefWidth="225.0" HBox.hgrow="ALWAYS" />
+                                                                <Pane prefHeight="400.0" prefWidth="20.0" />
+                                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                                    <children>
+                                                                        <Pane prefHeight="130.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                                                                        <Pane prefHeight="109.0" prefWidth="100.0">
+                                                         <children>
+                                                            <ImageView fitHeight="231.0" fitWidth="381.0" layoutX="-15.0" layoutY="-89.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../../../image/cute1.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </children></Pane>
+                                                                        <AnchorPane prefHeight="32.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                                            <children>
+                                                                                <Button layoutY="2.0" mnemonicParsing="false" onAction="#essayTranslate" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: rgba(255, 187, 88, 0.8);" text="Dịch" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
+                                                               <cursor>
+                                                                  <Cursor fx:constant="CLOSED_HAND" />
+                                                               </cursor></Button>
+                                                                            </children>
+                                                                        </AnchorPane>
+                                                                        <Pane prefHeight="121.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                                                                    </children>
+                                                                </VBox>
+                                                                <Pane prefHeight="400.0" prefWidth="26.0" />
+                                                                <TextArea fx:id="EasayResult" prefHeight="200.0" prefWidth="225.0" HBox.hgrow="ALWAYS" />
+                                                                <Pane prefHeight="400.0" prefWidth="24.0" />
+                                                            </children>
+                                                        </HBox>
+                                                        <Pane prefHeight="26.0" prefWidth="699.0" />
+                                                    </children>
+                                                </VBox>
+                                            </children></AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab style="-fx-background-color: rgba(255, 187, 88, 0.8);" text="Book mark">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <VBox layoutX="324.0" layoutY="149.0" prefHeight="531.2" prefWidth="699.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <children>
+                                                        <Pane prefHeight="45.0" prefWidth="699.0" VBox.vgrow="ALWAYS" />
+                                                        <HBox prefHeight="308.0" prefWidth="698.0" VBox.vgrow="ALWAYS">
+                                                            <children>
+                                                                <Pane prefHeight="450.0" prefWidth="15.0" />
+                                                                <ListView fx:id="listBookMark" onMouseClicked="#selectWordInBookMark" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                                <Pane prefHeight="450.0" prefWidth="29.0" />
+                                                                <WebView fx:id="infoWordInBookMark" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                                <Pane prefHeight="450.0" prefWidth="10.0" />
+                                                                <GridPane prefHeight="450.0" prefWidth="70.0">
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints maxHeight="124.0" minHeight="10.0" prefHeight="44.799991607666016" vgrow="SOMETIMES" />
+                                                                        <RowConstraints maxHeight="168.79998397827148" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                                                                        <RowConstraints maxHeight="264.8000030517578" minHeight="10.0" prefHeight="135.8" vgrow="SOMETIMES" />
+                                                                        <RowConstraints maxHeight="278.4" minHeight="10.0" prefHeight="50.59999694824222" vgrow="SOMETIMES" />
+                                                                        <RowConstraints maxHeight="297.60004272460935" minHeight="10.0" prefHeight="175.99997558593748" vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                                                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
+                                                                          <Button mnemonicParsing="false" onAction="#deleteAWordInBookMark" style="-fx-background-color: rgba(255, 187, 88, 0.8);" text="Delete" GridPane.rowIndex="2">
+                                                         <graphic>
+                                                            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../../../image/delete.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                         <cursor>
+                                                            <Cursor fx:constant="CLOSED_HAND" />
+                                                         </cursor>
+                                                      </Button>
+                                                                          <Button mnemonicParsing="false" onAction="#deleteBookMark" style="-fx-background-color: rgba(255, 187, 88, 0.8);" text="Delete All" GridPane.rowIndex="4">
+                                                         <graphic>
+                                                            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                               <image>
+                                                                  <Image url="@../../../image/deleteall.png" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </graphic>
+                                                         <cursor>
+                                                            <Cursor fx:constant="CLOSED_HAND" />
+                                                         </cursor>
+                                                      </Button>
+                                                                    </children>
+                                                                </GridPane>
+                                                                <Pane prefHeight="450.0" prefWidth="0.0" HBox.hgrow="NEVER" />
+                                                            </children>
+                                                        </HBox>
+                                                        <Pane prefHeight="37.0" prefWidth="699.0" VBox.vgrow="ALWAYS" />
+                                                    </children>
+                                                </VBox>
+                                            </children></AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab style="-fx-background-color: rgba(255, 187, 88, 0.8);" text="History">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <AnchorPane layoutX="170.0" layoutY="97.0" prefHeight="531.2" prefWidth="699.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <children>
+                                                        <VBox layoutX="227.0" layoutY="102.0" prefHeight="531.2" prefWidth="699.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <children>
+                                                                <Pane prefHeight="30.0" prefWidth="699.0" />
+                                                                <HBox prefHeight="378.0" prefWidth="699.0">
+                                                                    <children>
+                                                                        <Pane prefHeight="361.0" prefWidth="18.0" />
+                                                                        <ListView fx:id="listHistory" prefHeight="361.0" prefWidth="544.0" HBox.hgrow="ALWAYS" />
+                                                                        <Pane prefHeight="482.0" prefWidth="17.0" />
+                                                                        <VBox prefHeight="482.0" prefWidth="95.0">
+                                                                            <children>
+                                                                                <Pane prefHeight="176.0" prefWidth="95.0" VBox.vgrow="ALWAYS" />
+                                                                                <Pane prefHeight="126.0" prefWidth="95.0" />
+                                                                                <AnchorPane prefHeight="38.0" prefWidth="83.0" VBox.vgrow="ALWAYS">
+                                                                                    <children>
+                                                                                        <Button layoutY="-8.0" mnemonicParsing="false" onAction="#deleteHistory" prefHeight="27.0" prefWidth="95.0" style="-fx-background-color: rgba(255, 187, 88, 0.8);" text="Delete" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                     <graphic>
+                                                                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                                           <image>
+                                                                              <Image url="@../../../image/deleteall.png" />
+                                                                           </image>
+                                                                        </ImageView>
+                                                                     </graphic>
+                                                                     <cursor>
+                                                                        <Cursor fx:constant="CLOSED_HAND" />
+                                                                     </cursor></Button>
+                                                                                    </children>
+                                                                                </AnchorPane>
+                                                                                <Pane prefHeight="146.0" prefWidth="95.0" />
+                                                                            </children>
+                                                                        </VBox>
+                                                                        <Pane prefHeight="482.0" prefWidth="17.0" />
+                                                                    </children>
+                                                                </HBox>
+                                                                <Pane prefHeight="39.0" prefWidth="699.0" VBox.vgrow="ALWAYS" />
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab style="-fx-background-color: rgba(255, 187, 88, 0.8);" text="Add">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <VBox layoutX="232.0" layoutY="116.0" prefHeight="531.2" prefWidth="699.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <children>
+                                                        <Pane prefHeight="30.0" prefWidth="699.0" />
+                                                        <HBox prefHeight="54.0" prefWidth="699.0">
+                                                            <children>
+                                                                <Pane prefHeight="39.0" prefWidth="362.0" />
+                                                                <ComboBox fx:id="selectLangNewWord" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="281.0" promptText="Language" style="-fx-background-color: rgba(186, 224, 255, 0.8);" HBox.hgrow="ALWAYS">
+                                                   <cursor>
+                                                      <Cursor fx:constant="CLOSED_HAND" />
+                                                   </cursor></ComboBox>
+                                                                <Pane prefHeight="34.0" prefWidth="338.0" />
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox prefHeight="53.0" prefWidth="699.0">
+                                                            <children>
+                                                                <Pane prefHeight="34.0" prefWidth="258.0" />
+                                                                <TextField fx:id="newWord" alignment="CENTER" promptText="Word" HBox.hgrow="ALWAYS" />
+                                                                <Pane prefHeight="34.0" prefWidth="238.0" />
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox prefHeight="247.0" prefWidth="699.0" VBox.vgrow="ALWAYS">
+                                                            <children>
+                                                                <Pane prefHeight="255.0" prefWidth="100.0" />
+                                                                <TextArea fx:id="meanOfNewWord" prefHeight="200.0" prefWidth="200.0" promptText="Meaning" HBox.hgrow="ALWAYS" />
+                                                                <Pane prefHeight="255.0" prefWidth="100.0" />
+                                                            </children>
+                                                        </HBox>
+                                                        <Pane prefHeight="29.0" prefWidth="699.0" />
+                                          <GridPane>
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="377.00001525878906" minWidth="10.0" prefWidth="276.6000122070312" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="301.0" minWidth="10.0" prefWidth="181.60001220703128" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.0000366210937" minWidth="10.0" prefWidth="241.5999877929687" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Button mnemonicParsing="false" onAction="#addNewWord" prefHeight="26.0" prefWidth="73.0" style="-fx-background-color: rgba(186, 224, 255, 0.8);" text="Add" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../../image/add.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <cursor>
+                                                      <Cursor fx:constant="CLOSED_HAND" />
+                                                   </cursor></Button>
+                                             </children>
+                                          </GridPane>
+                                                        <Pane prefHeight="44.0" prefWidth="699.0" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab style="-fx-background-color: rgba(255, 187, 88, 0.8);" text="Entertainment">
+                                    <content>
+                                        <AnchorPane>
+                                            <children>
+                                                <Button layoutX="273.0" layoutY="164.0" mnemonicParsing="false" onAction="#switchToHangMan" prefHeight="55.0" prefWidth="152.0" style="-fx-background-color: rgba(255, 187, 88, 0.8);" text="Hangman">
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor></Button>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                                <Tab style="-fx-background-color: rgba(255, 187, 88, 0.8);" text="Setting">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <VBox layoutX="210.0" layoutY="139.0" prefHeight="478.4" prefWidth="699.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <children>
+                                                        <Pane prefHeight="162.0" prefWidth="699.0" />
+                                                        <HBox prefHeight="81.0" prefWidth="699.0" VBox.vgrow="ALWAYS">
+                                                            <children>
+                                                                <Pane prefHeight="54.0" prefWidth="290.0" HBox.hgrow="ALWAYS" />
+                                                                <AnchorPane prefHeight="46.0" prefWidth="184.0">
+                                                                    <children>
+                                                                        <Button layoutX="48.0" layoutY="20.0" mnemonicParsing="false" onAction="#restoreDatabase" prefHeight="46.4" prefWidth="162.4" style="-fx-background-color: rgba(255, 187, 88, 0.8);" text="Restore database" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <cursor>
+                                                            <Cursor fx:constant="CLOSED_HAND" />
+                                                         </cursor></Button>
+                                                                    </children>
+                                                                </AnchorPane>
+                                                                <Pane prefHeight="39.0" prefWidth="290.0" HBox.hgrow="ALWAYS" />
+                                                            </children>
+                                                        </HBox>
+                                                        <Pane prefHeight="96.0" prefWidth="699.0" />
+                                                        <HBox prefHeight="82.0" prefWidth="699.0" VBox.vgrow="ALWAYS">
+                                                            <children>
+                                                                <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                                <AnchorPane prefHeight="76.0" prefWidth="162.0">
+                                                                    <children>
+                                                                        <Button layoutX="55.0" layoutY="11.0" mnemonicParsing="false" onAction="#reset" prefHeight="47.2" prefWidth="162.4" style="-fx-background-color: rgba(255, 187, 88, 0.8);" text="Reset" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <cursor>
+                                                            <Cursor fx:constant="CLOSED_HAND" />
+                                                         </cursor></Button>
+                                                                    </children>
+                                                                </AnchorPane>
+                                                                <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                            </children>
+                                                        </HBox>
+                                                        <Pane prefHeight="187.0" prefWidth="699.0" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                            </tabs>
+                        </TabPane>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

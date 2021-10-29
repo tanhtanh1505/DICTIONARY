@@ -119,12 +119,14 @@ public class HelloController implements Initializable {
         listHistory.getItems().add(word.getText());
     }
 
-    public void speakWord(ActionEvent event) throws IOException, JavaLayerException {
-        if(selectLangFrom.getValue().equals(Language.ENGLISH)){
-            TranslateByGoogle.speak(word.getText(), Language.VIETNAMESE);
-        }
-        else {
-            TranslateByGoogle.speak(word.getText(), Language.ENGLISH);
+    public void speakWord(MouseEvent mouseEvent) throws IOException, JavaLayerException {
+        if(mouseEvent.getClickCount() == 1){
+            if(selectLangFrom.getValue().equals(Language.ENGLISH)){
+                TranslateByGoogle.speak(word.getText(), Language.VIETNAMESE);
+            }
+            else {
+                TranslateByGoogle.speak(word.getText(), Language.ENGLISH);
+            }
         }
     }
 
