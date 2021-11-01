@@ -7,22 +7,88 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.228643216080402" maxHeight="-Infinity" maxWidth="700" minHeight="500" minWidth="700" orientation="VERTICAL" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.HangMan">
-  <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-         <children>
-            <Label layoutX="248.0" layoutY="27.0" text="HANG MAN">
-               <font>
-                  <Font name="Times New Roman Bold" size="36.0" />
-               </font>
-            </Label>
-         </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-         <children>
-            <Button layoutX="239.0" layoutY="70.0" mnemonicParsing="false" onAction="#btnStart" prefHeight="45.0" prefWidth="221.0" text="Start" />
-            <Button layoutX="239.0" layoutY="268.0" mnemonicParsing="false" onAction="#btnExit" prefHeight="45.0" prefWidth="221.0" text="Exit" />
-            <Button layoutX="239.0" layoutY="205.0" mnemonicParsing="false" onAction="#btnScore" prefHeight="45.0" prefWidth="221.0" text="Score" />
-            <Button layoutX="239.0" layoutY="139.0" mnemonicParsing="false" onAction="#btnPlayWithAI" prefHeight="45.0" prefWidth="221.0" text="Play With AI" />
-         </children></AnchorPane>
-  </items>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.effect.Shadow?>
+<SplitPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.HangMan">
+    <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="1000.0" stylesheets="@design1.css">
+            <children>
+                <ImageView fitHeight="800.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../image/background.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="78.0" fitWidth="234.0" layoutX="710.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../image/HANGMANTITLE.png" />
+                    </image>
+                    <effect>
+                        <Shadow />
+                    </effect>
+                </ImageView>
+                <ImageView fitHeight="83.0" fitWidth="254.0" layoutX="709.0" layoutY="564.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../image/HANGMANTITLE.png" />
+                    </image>
+                    <effect>
+                        <Shadow blurType="ONE_PASS_BOX" />
+                    </effect>
+                </ImageView>
+                <ImageView fitHeight="69.0" fitWidth="237.0" layoutX="60.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../image/HANGMANTITLE.png" />
+                    </image>
+                    <effect>
+                        <Shadow blurType="TWO_PASS_BOX" />
+                    </effect>
+                </ImageView>
+                <ImageView fitHeight="222.0" fitWidth="636.0" layoutX="217.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../image/logo1.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="150.0" fitWidth="250.0" layoutX="378.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../image/—Pngtree—glossy%20ui%20colorful%20buttons%20set_5291018%20(2).png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="150.0" fitWidth="250.0" layoutX="382.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../image/—Pngtree—glossy%20ui%20colorful%20buttons%20set_5291018%20(2).png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="150.0" fitWidth="250.0" layoutX="383.0" layoutY="457.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../image/—Pngtree—glossy%20ui%20colorful%20buttons%20set_5291018%20(2).png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="150.0" fitWidth="250.0" layoutX="383.0" layoutY="572.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../image/—Pngtree—glossy%20ui%20colorful%20buttons%20set_5291018%20(2).png" />
+                    </image>
+                </ImageView>
+                <Button alignment="CENTER" layoutX="392.0" layoutY="244.0" mnemonicParsing="false" onAction="#btnStart" prefHeight="76.0" prefWidth="224.0" style="-fx-background-color: transparent;" text="Start">
+                    <font>
+                        <Font name="Comic Sans MS" size="31.0" />
+                    </font>
+                </Button>
+                <Button layoutX="395.0" layoutY="596.0" mnemonicParsing="false" onAction="#btnExit" prefHeight="73.0" prefWidth="226.0" style="-fx-background-color: transparent;" text="Exit">
+                    <font>
+                        <Font name="Comic Sans MS Bold" size="25.0" />
+                    </font>
+                </Button>
+                <Button alignment="CENTER" layoutX="397.0" layoutY="480.0" mnemonicParsing="false" onAction="#btnScore" prefHeight="77.0" prefWidth="223.0" style="-fx-background-color: transparent;" text="Score">
+                    <font>
+                        <Font name="Comic Sans MS" size="31.0" />
+                    </font>
+                </Button>
+                <Button alignment="CENTER" layoutX="397.0" layoutY="364.0" mnemonicParsing="false" onAction="#btnPlayWithAI" prefHeight="75.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="Play With AI">
+                    <font>
+                        <Font name="Comic Sans MS" size="27.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </items>
 </SplitPane>
