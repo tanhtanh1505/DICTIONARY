@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.FirstView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #B0C4DE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.FirstView">
    <children>
-      <ProgressBar fx:id="progressBar" layoutX="200.0" layoutY="270.0" prefWidth="200.0" progress="0.0" />
-      <Button layoutX="275.0" layoutY="331.0" mnemonicParsing="false" onAction="#start" text="Start" />
+      <ImageView fitHeight="306.0" fitWidth="451.0" layoutX="282.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../image/dictionary.png" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="progressBar" blendMode="HARD_LIGHT" layoutX="320.0" layoutY="529.0" prefHeight="30.0" prefWidth="363.0" progress="0.0" style="-fx-background-color: DD8A37; -fx-border-color: FAF8F6;">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor></ProgressBar>
+      <Button layoutX="438.0" layoutY="601.0" mnemonicParsing="false" onAction="#start" prefHeight="50.0" prefWidth="123.0" style="-fx-background-color: FAF9F8;" text="Start">
+         <font>
+            <Font name="Arial Bold" size="23.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="38.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/fire.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></Button>
+      <ImageView fitHeight="216.0" fitWidth="572.0" layoutX="206.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../image/welcomeText.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
