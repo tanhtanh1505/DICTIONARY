@@ -1,58 +1,84 @@
 package com.example.dictionary;
 
+import com.example.GoogleAPI.Language;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.PrintWriter;
+import java.sql.*;
 import java.util.HashSet;
 
 public class BookMark {
-    private static HashSet<String> listWord = new HashSet<>();
-    private static final String fileName = "./data/BookMark.txt";
+    private static final String url = "jdbc:mysql://localhost:3307/dictiondb";
 
-    public static void load() {
-        try {
-            File file = new File(fileName);
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
-            String line;
-            while ((line = br.readLine()) != null) {
-                listWord.add(line);
-            }
-            br.close();
-        }
-        catch (Exception e){
-            System.out.println("Error read file bookmark!");
-        }
-    }
+    private static Connection con;
+    private static Statement statement;
+    private static boolean isConnected = true;
 
     public static HashSet<String> getBookMark(){
+        HashSet<String> listWord = new HashSet<>();
+        try {
+            con = DriverManager.getConnection(url, "root", "");
+            statement = con.createStatement();
+
+            ResultSet rs = statement.executeQuery("select word from bookmark");
+            while(rs.next()){
+                listWord.add(rs.getString(1));
+            }
+        }
+        catch (Exception e){
+            isConnected = false;
+            System.out.println("Exception in read bookmark!");
+        }
         return listWord;
     }
 
-    public static void addWord(String s){
-        listWord.add(s);
+    public static String getMean(String word){
+        if(isConnected) {
+            try {
+                word = InitData.convertS(word);
+                ResultSet rs = statement.executeQuery("select mean from bookmark where word = '" + word + "';");
+                if (rs.next()) {
+                    return rs.getString(1);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return "";
     }
 
-    public static void deleteWord(String s){
-        listWord.remove(s);
+    public static void addWord(String word, String lang){
+        String mean = TranslateOffline.textTranslate(lang, word);
+        word = InitData.convertS(word);
+        mean = InitData.convertS(mean);
+        String addquery = "INSERT INTO `bookmark` (`word`, `mean`) VALUES ('" + word + "', '" + mean + "');";
+        try {
+            if (isConnected)
+                statement.executeUpdate(addquery);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteWord(String word){
+        word = InitData.convertS(word);
+        String deletequery = "DELETE FROM `bookmark` WHERE word = '"+word+"'";
+        try {
+            if(isConnected)
+                statement.executeUpdate(deletequery);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void deleteAll(){
-        listWord.clear();
-    }
-
-    public static void Save() {
         try {
-            PrintWriter writer = new PrintWriter(fileName, "UTF-8");
-            for (String s : listWord) {
-                writer.println(s);
-            }
-            writer.close();
-            //System.out.println("Bookmark Saved!");
-        }
-        catch (Exception e){
-            System.out.println("Error save file bookmark!");
+            if(isConnected)
+                statement.executeUpdate("TRUNCATE bookmark");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

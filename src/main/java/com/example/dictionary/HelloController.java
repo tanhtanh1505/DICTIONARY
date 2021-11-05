@@ -3,6 +3,7 @@ package com.example.dictionary;
 import com.example.GoogleAPI.Language;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -65,12 +66,15 @@ public class HelloController implements Initializable {
     @FXML
     private TextArea meanOfNewWord;
 
+    //Setting
+    @FXML
+    private ProgressBar progressReset;
+    @FXML
+    private Label statusReset;
+
     //Khoi tao du lieu
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        BookMark.load();
-        History.load();
-
         HashMap<String, String> dataLanguage = Language.getInstance().getListLanguage();
         ObservableList<String> data = FXCollections.observableArrayList(dataLanguage.values());
         ObservableList<String> selectLang = FXCollections.observableArrayList("ENGLISH", "VIETNAMESE");
@@ -149,25 +153,27 @@ public class HelloController implements Initializable {
 
     //BookMark
     public void mark(ActionEvent event) {
-        BookMark.addWord(word.getText());
         if(!listBookMark.getItems().contains(word.getText())) {
+            BookMark.addWord(word.getText(), selectLangFrom.getValue());
             listBookMark.getItems().add(word.getText());
         }
     }
 
     public void selectWordInBookMark(MouseEvent mouseEvent) {
-        String s = TranslateOffline.textTranslate(Language.ENGLISH, listBookMark.getSelectionModel().getSelectedItem());
+        String s = BookMark.getMean((String)listBookMark.getSelectionModel().getSelectedItem());
         infoWordInBookMark.getEngine().loadContent(s, "text/html");
     }
 
     public void deleteAWordInBookMark(ActionEvent event) {
         BookMark.deleteWord((String) listBookMark.getSelectionModel().getSelectedItem());
         listBookMark.getItems().remove(listBookMark.getSelectionModel().getSelectedIndex());
+        infoWordInBookMark.getEngine().loadContent("");
     }
 
     public void deleteBookMark(ActionEvent event) {
         BookMark.deleteAll();
         listBookMark.getItems().clear();
+        infoWordInBookMark.getEngine().loadContent("");
     }
 
     //History
@@ -179,6 +185,12 @@ public class HelloController implements Initializable {
     //Edit Word
     public void addNewWord(ActionEvent event) {
         InitData.addAWord(newWord.getText(), meanOfNewWord.getText(), selectLangNewWord.getValue());
+        Alert al = new Alert(Alert.AlertType.INFORMATION);
+        al.setHeaderText("Add word successfully!");
+        al.setContentText("You added new word: '" + newWord.getText().toUpperCase() + "' into " + selectLangNewWord.getValue() + " database");
+        al.show();
+        newWord.clear();
+        meanOfNewWord.clear();
     }
 
     public void editWord(ActionEvent event) throws IOException {
@@ -215,6 +227,8 @@ public class HelloController implements Initializable {
     }
 
     //Setting
+    loadData taskReset;
+
     public void restoreDatabase(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Reset Data");
@@ -223,7 +237,11 @@ public class HelloController implements Initializable {
 
         Optional<ButtonType> option = alert.showAndWait();
         if (option.get() == ButtonType.OK) {
-            InitData.reset(true);
+            progressReset.setVisible(true);
+            taskReset = new loadData();
+            progressReset.progressProperty().bind(taskReset.progressProperty());
+            statusReset.textProperty().bind(taskReset.messageProperty());
+            new Thread(taskReset).start();
         }
     }
 
@@ -235,18 +253,27 @@ public class HelloController implements Initializable {
 
         Optional<ButtonType> option = alert.showAndWait();
         if (option.get() == ButtonType.OK) {
-            InitData.reset(false);
+            progressReset.setVisible(true);
+            taskReset = new loadData();
+            progressReset.progressProperty().bind(taskReset.progressProperty());
+            statusReset.textProperty().bind(taskReset.messageProperty());
+            new Thread(taskReset).start();
+
             History.deleteAll();
             BookMark.deleteAll();
             RankHangMan.deleteAll();
-
-            Alert al = new Alert(Alert.AlertType.INFORMATION);
-            al.setHeaderText("RESET SUCCESS!!");
-            al.setContentText("Reload your application");
-            al.showAndWait();
-
-            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage.close();
         }
+    }
+
+    class loadData extends Task<Void> {
+        @Override
+        protected Void call(){
+            updateMessage("Please wait, it will take some minutes");
+            InitData.reset(false);
+            updateProgress(1,1);
+            updateMessage("Done!");
+            return null;
+        }
+
     }
 }

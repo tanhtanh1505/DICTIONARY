@@ -24,8 +24,7 @@ public class GameplayHangManPlayerGuess{
     private TextField guessedWord;
     @FXML
     private Label lives;
-//    @FXML
-//    private static Label timecounter;
+
     @FXML
     private Label score;
 
@@ -90,7 +89,6 @@ public class GameplayHangManPlayerGuess{
         if (option.get() == ButtonType.OK) {
             //Luu diem
             RankHangMan.add(namePlayer, game.getScore());
-            RankHangMan.Save();
 
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();

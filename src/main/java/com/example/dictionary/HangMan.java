@@ -15,7 +15,6 @@ import java.util.ResourceBundle;
 public class HangMan implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        RankHangMan.load();
     }
 
     public void switchScene(ActionEvent event, String s) throws IOException {

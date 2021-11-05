@@ -33,6 +33,7 @@ public class EditWordController {
         else
             infoWord.setText(InitData.getHashMapVE().get(w.toLowerCase()));
         language = lang;
+        previewChange.getEngine().loadContent(infoWord.getText(), "text/html");
     }
 
     public void checkKeyType(KeyEvent keyEvent) {

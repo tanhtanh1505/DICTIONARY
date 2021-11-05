@@ -10,6 +10,7 @@ module com.example.dictionary {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires jl;
+    requires java.sql;
 
     opens com.example.dictionary to javafx.fxml;
     exports com.example.dictionary;

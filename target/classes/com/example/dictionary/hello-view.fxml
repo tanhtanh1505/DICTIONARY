@@ -1,117 +1,291 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.web.*?>
-<?import javafx.scene.*?>
 <?import java.lang.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.HelloController">
+<SplitPane dividerPositions="0.19054441260744986" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.HelloController">
   <items>
-    <AnchorPane maxHeight="1.7976931348623157E308" minHeight="60.0" minWidth="0.0" prefHeight="80.0" prefWidth="598.0" SplitPane.resizableWithParent="false">
+    <AnchorPane maxHeight="1.7976931348623157E308" minHeight="60.0" minWidth="0.0" prefHeight="80.0" prefWidth="598.0" style="-fx-background-color: #312a60;" SplitPane.resizableWithParent="false">
          <children>
-            <Label alignment="CENTER" layoutX="263.0" layoutY="14.0" text="DICTIONARY" textAlignment="CENTER">
+            <ImageView fitHeight="153.0" fitWidth="660.0" layoutX="272.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/dictionaryText.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="414.0" layoutY="55.0" textAlignment="CENTER">
                <font>
                   <Font name="Times New Roman Bold" size="26.0" />
                </font>
             </Label>
          </children></AnchorPane>
-      <TabPane minHeight="400.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane minHeight="400.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #E6E6FA;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Dịch từ">
+          <Tab style="-fx-background-color: rgba(234, 182, 74, 0.8);" text="Word Translate">
                <content>
-                  <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
+                  <SplitPane dividerPositions="0.213258785942492" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="1002.0" style="-fx-background-color: #E6E6FA;">
                     <items>
                       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefHeight="160.0" prefWidth="210.0">
                            <children>
                               <TextField fx:id="wordFind" layoutX="20.0" layoutY="59.0" onKeyPressed="#keyHandle" onKeyReleased="#keyType" prefHeight="23.0" prefWidth="171.0" />
-                              <ComboBox fx:id="selectLangFrom" layoutX="46.0" layoutY="14.0" prefHeight="29.0" prefWidth="130.0" />
-                              <ListView fx:id="listWord" layoutX="12.0" layoutY="96.0" onMouseClicked="#selectWordSuggest" prefHeight="251.0" prefWidth="187.0" />
+                              <ComboBox fx:id="selectLangFrom" layoutX="36.0" layoutY="18.0" prefHeight="30.0" prefWidth="145.0" style="-fx-background-color: rgba(135, 224, 243, 0.5);">
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor></ComboBox>
+                              <ListView fx:id="listWord" layoutX="12.0" layoutY="96.0" onMouseClicked="#selectWordSuggest" prefHeight="406.0" prefWidth="189.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="280.0" prefWidth="480.0">
                            <children>
-                              <WebView fx:id="infoWord" layoutX="6.0" layoutY="49.0" prefHeight="309.0" prefWidth="466.0" />
-                              <Label fx:id="word" layoutX="5.0" layoutY="14.0">
+                              <WebView fx:id="infoWord" layoutX="11.0" layoutY="64.0" prefHeight="439.0" prefWidth="756.0" />
+                              <Label fx:id="word" layoutX="14.0" layoutY="12.0">
                                  <font>
-                                    <Font name="Times New Roman Bold" size="18.0" />
+                                    <Font name="Times New Roman Bold" size="30.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="263.0" layoutY="9.0" mnemonicParsing="false" onAction="#mark" prefHeight="29.0" prefWidth="79.0" text="To Mark" />
-                              <Button fx:id="editWordBtn" layoutX="352.0" layoutY="9.0" mnemonicParsing="false" onAction="#editWord" text="Edit" />
-                              <Button layoutX="409.0" layoutY="9.0" mnemonicParsing="false" onAction="#deleteAWordInData" text="Delete" />
-                              <Button layoutX="192.0" layoutY="9.0" mnemonicParsing="false" onAction="#speakWord" text="Speak" />
+                              <Button layoutX="440.0" layoutY="10.0" mnemonicParsing="false" onAction="#mark" prefHeight="38.0" prefWidth="95.0" text="Mark">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../image/mark.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor></Button>
+                              <Button fx:id="editWordBtn" layoutX="549.0" layoutY="10.0" mnemonicParsing="false" onAction="#editWord" prefHeight="38.0" prefWidth="83.0" text="Edit">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../image/edit.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor></Button>
+                              <Button layoutX="648.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteAWordInData" prefHeight="39.0" prefWidth="93.0" text="Delete">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../image/delete.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor></Button>
+                              <Button layoutX="336.0" layoutY="10.0" mnemonicParsing="false" onAction="#speakWord" prefHeight="40.0" prefWidth="89.0" text="Speak">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../image/speaker.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor></Button>
                            </children>
                         </AnchorPane>
                     </items>
                   </SplitPane>
                </content>
           </Tab>
-          <Tab text="Dịch văn bản">
+          <Tab style="-fx-background-color: rgba(234, 182, 74, 0.8);" text="Text Translate">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextArea fx:id="EasayStart" layoutX="14.0" layoutY="50.0" prefHeight="297.0" prefWidth="277.0" wrapText="true" AnchorPane.leftAnchor="10.0" />
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="302.0" layoutY="165.0" mnemonicParsing="false" onAction="#essayTranslate" prefHeight="29.0" prefWidth="75.0" text="Dịch" />
-                        <TextArea fx:id="EasayResult" editable="false" layoutX="407.0" layoutY="50.0" prefHeight="297.0" prefWidth="277.0" wrapText="true" AnchorPane.rightAnchor="10.0" />
-                        <ComboBox fx:id="langFrom" layoutX="74.0" layoutY="11.0" prefWidth="150.0" promptText="Ngôn ngữ" />
-                        <ComboBox fx:id="langTo" layoutX="471.0" layoutY="11.0" prefWidth="150.0" promptText="Ngôn ngữ" />
-                        <Label layoutX="656.0" layoutY="27.0" onMouseClicked="#speakEssay" text="&lt;3" />
+                        <ImageView fitHeight="140.0" fitWidth="146.0" layoutX="436.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../image/shark.png" />
+                           </image>
+                        </ImageView>
+                        <TextArea fx:id="EasayStart" layoutX="24.0" layoutY="92.0" prefHeight="400.0" prefWidth="400.0" wrapText="true" AnchorPane.leftAnchor="24.0" />
+                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="443.0" layoutY="266.0" mnemonicParsing="false" onAction="#essayTranslate" prefHeight="54.0" prefWidth="122.0">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/translate.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <TextArea fx:id="EasayResult" editable="false" layoutX="584.0" layoutY="92.0" prefHeight="400.0" prefWidth="400.0" wrapText="true" AnchorPane.rightAnchor="14.0" />
+                        <ComboBox fx:id="langFrom" layoutX="123.0" layoutY="29.0" prefHeight="40.0" prefWidth="210.0" promptText="Languages" style="-fx-background-color: rgba(135, 224, 243, 0.5);">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow color="#0000004d" />
+                           </effect></ComboBox>
+                        <ComboBox fx:id="langTo" layoutX="687.0" layoutY="27.0" prefHeight="40.0" prefWidth="210.0" promptText="Languages" style="-fx-background-color: rgba(135, 224, 243, 0.5);">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow color="#0000004d" />
+                           </effect></ComboBox>
+                        <Label layoutX="478.0" layoutY="150.0" onMouseClicked="#speakEssay" prefHeight="70.0" prefWidth="57.0">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor></Label>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Book Mark">
+            <Tab style="-fx-background-color: rgba(234, 182, 74, 0.8);" text="Book Mark">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ListView fx:id="listBookMark" layoutX="14.0" layoutY="17.0" onMouseClicked="#selectWordInBookMark" prefHeight="336.0" prefWidth="275.0" />
-                        <Button layoutX="612.0" layoutY="24.0" mnemonicParsing="false" onAction="#deleteAWordInBookMark" text="Delete" />
-                        <Button layoutX="601.0" layoutY="70.0" mnemonicParsing="false" onAction="#deleteBookMark" text="Delete All" />
-                        <WebView fx:id="infoWordInBookMark" layoutX="300.0" layoutY="17.0" prefHeight="335.0" prefWidth="284.0" />
+                        <ListView fx:id="listBookMark" layoutX="60.0" layoutY="27.0" onMouseClicked="#selectWordInBookMark" prefHeight="400.0" prefWidth="400.0" />
+                        <Button layoutX="796.0" layoutY="461.0" mnemonicParsing="false" onAction="#deleteAWordInBookMark" prefHeight="40.0" prefWidth="100.0" text="Delete">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/delete.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor></Button>
+                        <Button layoutX="641.0" layoutY="460.0" mnemonicParsing="false" onAction="#deleteBookMark" prefHeight="40.0" prefWidth="119.0" text="Delete All">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/deleteall.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor></Button>
+                        <WebView fx:id="infoWordInBookMark" layoutX="526.0" layoutY="27.0" prefHeight="400.0" prefWidth="400.0" />
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab text="History">
+            <Tab style="-fx-background-color: rgba(234, 182, 74, 0.8);" text="History">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ListView fx:id="listHistory" layoutX="14.0" layoutY="14.0" prefHeight="337.0" prefWidth="604.0" />
-                        <Button layoutX="627.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteHistory" text="Delete" />
+                        <ListView fx:id="listHistory" layoutX="14.0" layoutY="14.0" prefHeight="425.0" prefWidth="969.0" />
+                        <Button layoutX="436.0" layoutY="454.0" mnemonicParsing="false" onAction="#deleteHistory" prefHeight="45.0" prefWidth="126.0" text="Delete">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/deleteall.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor></Button>
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab text="Add">
+            <Tab style="-fx-background-color: rgba(234, 182, 74, 0.8);" text="Add Word">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="newWord" layoutX="263.0" layoutY="59.0" promptText="Word" />
-                        <TextArea fx:id="meanOfNewWord" layoutX="62.0" layoutY="100.0" prefHeight="200.0" prefWidth="589.0" promptText="Meaning" />
-                        <Button layoutX="334.0" layoutY="310.0" mnemonicParsing="false" onAction="#addNewWord" text="Add">
+                        <TextField fx:id="newWord" layoutX="355.0" layoutY="91.0" prefHeight="39.0" prefWidth="236.0" promptText="Word" />
+                        <TextArea fx:id="meanOfNewWord" layoutX="66.0" layoutY="145.0" prefHeight="295.0" prefWidth="868.0" promptText="Meaning" />
+                        <Button layoutX="429.0" layoutY="462.0" mnemonicParsing="false" onAction="#addNewWord" prefHeight="39.0" prefWidth="95.0" text="Add">
                            <font>
                               <Font size="14.0" />
                            </font>
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/add.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
                         </Button>
-                        <ComboBox fx:id="selectLangNewWord" layoutX="282.0" layoutY="14.0" prefWidth="150.0" promptText="Language" />
+                        <ComboBox fx:id="selectLangNewWord" layoutX="381.0" layoutY="38.0" prefHeight="34.0" prefWidth="189.0" promptText="Language" style="-fx-background-color: rgba(135, 224, 243, 0.5) rgba(135, 224, 243, 0.5);">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor></ComboBox>
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab text="Entertainment">
+            <Tab style="-fx-background-color: rgba(234, 182, 74, 0.8);" text="Entertainment">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="304.0" layoutY="46.0" mnemonicParsing="false" onAction="#switchToHangMan" text="Hang Man" />
+                        <Button layoutX="433.0" layoutY="232.0" mnemonicParsing="false" onAction="#switchToHangMan" prefHeight="58.0" prefWidth="133.0" text="Hang Man">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor></Button>
                      </children>
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab text="Setting">
+            <Tab style="-fx-background-color: rgba(234, 182, 74, 0.8);" text="Setting">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="232.0" layoutY="193.0" mnemonicParsing="false" onAction="#reset" prefHeight="55.0" prefWidth="234.0" text="Reset" />
-                        <Button layoutX="233.0" layoutY="116.0" mnemonicParsing="false" onAction="#restoreDatabase" prefHeight="54.0" prefWidth="232.0" text="Restore database" />
+                        <Button layoutX="382.0" layoutY="299.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#reset" prefHeight="55.0" prefWidth="234.0" text="Reset">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/reset.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="15.0" />
+                           </font></Button>
+                        <Button layoutX="383.0" layoutY="197.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#restoreDatabase" prefHeight="54.0" prefWidth="232.0" text="Restore database">
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/restore.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="15.0" />
+                           </font></Button>
+                        <ProgressBar fx:id="progressReset" layoutX="220.0" layoutY="122.0" prefHeight="23.0" prefWidth="558.0" progress="0.0" visible="false" />
+                        <Label fx:id="statusReset" alignment="CENTER" layoutX="12.0" layoutY="47.0" prefHeight="21.0" prefWidth="975.0" textAlignment="CENTER">
+                           <font>
+                              <Font name="Times New Roman" size="36.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
               </content>

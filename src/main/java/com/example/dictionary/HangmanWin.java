@@ -27,7 +27,6 @@ public class HangmanWin {
     public void exit(ActionEvent event) throws IOException {
         //Luu diem
         RankHangMan.add(namePlayer, scoreGet);
-        RankHangMan.Save();
 
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
