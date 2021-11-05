@@ -37,9 +37,12 @@ public class RankHangMan {
     }
 
     public static void add(String name, int sc){
+        name = InitData.convertS(name);
         String addquery = "INSERT INTO `rank_hang_man` (`name`, `score`) VALUES ('" + name + "', '" + sc + "');";
         try {
-            statement.executeUpdate(addquery);
+            con = DriverManager.getConnection(url, "root", "");
+            if(statement != null)
+                statement.executeUpdate(addquery);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -47,6 +50,7 @@ public class RankHangMan {
 
     public static void deleteAll(){
         try {
+            con = DriverManager.getConnection(url, "root", "");
             statement = con.createStatement();
             statement.executeUpdate("TRUNCATE rank_hang_man");
         } catch (SQLException e) {

@@ -1,3 +1,7 @@
 .button:hover {
     -fx-text-fill: red;
 }
+
+.btnNo:hover{
+    -fx-text-fill: black!important;
+}

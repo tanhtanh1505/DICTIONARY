@@ -12,6 +12,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 
@@ -42,7 +43,10 @@ public class EditWordController {
 
     public void submit(ActionEvent event) throws IOException {
         InitData.editWord(word.getText().toLowerCase(), infoWord.getText().toLowerCase(), language);
-        //InitData.Save();
+        Notifications.create()
+                .title("Edit successfully")
+                .text(word.getText() + " is edited!").darkStyle()
+                .showInformation();
         cancel(event);
     }
 

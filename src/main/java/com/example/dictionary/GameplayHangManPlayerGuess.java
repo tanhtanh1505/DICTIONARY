@@ -88,7 +88,8 @@ public class GameplayHangManPlayerGuess{
         Optional<ButtonType> option = alert.showAndWait();
         if (option.get() == ButtonType.OK) {
             //Luu diem
-            RankHangMan.add(namePlayer, game.getScore());
+            if(namePlayer != null && namePlayer.length() > 0)
+                RankHangMan.add(namePlayer, game.getScore());
 
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             FXMLLoader loader = new FXMLLoader();

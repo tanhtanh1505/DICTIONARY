@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.web.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -15,9 +16,29 @@
             <Font name="Times New Roman Bold" size="38.0" />
          </font>
       </Label>
-      <TextArea fx:id="infoWord" layoutX="26.0" layoutY="111.0" onKeyTyped="#checkKeyType" prefHeight="479.0" prefWidth="444.0" wrapText="true" />
-      <Button layoutX="283.0" layoutY="612.0" mnemonicParsing="false" onAction="#submit" prefHeight="50.0" prefWidth="149.0" text="Submit" />
-      <Button layoutX="565.0" layoutY="612.0" mnemonicParsing="false" onAction="#cancel" prefHeight="50.0" prefWidth="149.0" text="Cancel" />
-      <WebView fx:id="previewChange" layoutX="522.0" layoutY="111.0" prefHeight="479.0" prefWidth="444.0" />
+      <TextArea fx:id="infoWord" layoutX="25.0" layoutY="111.0" onKeyTyped="#checkKeyType" prefHeight="479.0" prefWidth="444.0" wrapText="true" />
+      <Button layoutX="310.0" layoutY="620.0" mnemonicParsing="false" onAction="#submit" prefHeight="43.0" prefWidth="125.0" text="Submit">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/submit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="565.0" layoutY="620.0" mnemonicParsing="false" onAction="#cancel" prefHeight="43.0" prefWidth="125.0" text="Cancel">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/delete.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <WebView fx:id="previewChange" layoutX="531.0" layoutY="111.0" prefHeight="479.0" prefWidth="444.0" />
    </children>
 </AnchorPane>

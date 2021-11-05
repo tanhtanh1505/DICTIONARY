@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javazoom.jl.decoder.JavaLayerException;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.net.URL;
@@ -156,6 +157,10 @@ public class HelloController implements Initializable {
         if(!listBookMark.getItems().contains(word.getText())) {
             BookMark.addWord(word.getText(), selectLangFrom.getValue());
             listBookMark.getItems().add(word.getText());
+            Notifications.create()
+                    .title("Mark success")
+                    .text(word.getText() + " is marked!").darkStyle()
+                    .showInformation();
         }
     }
 
@@ -184,11 +189,12 @@ public class HelloController implements Initializable {
 
     //Edit Word
     public void addNewWord(ActionEvent event) {
-        InitData.addAWord(newWord.getText(), meanOfNewWord.getText(), selectLangNewWord.getValue());
-        Alert al = new Alert(Alert.AlertType.INFORMATION);
-        al.setHeaderText("Add word successfully!");
-        al.setContentText("You added new word: '" + newWord.getText().toUpperCase() + "' into " + selectLangNewWord.getValue() + " database");
-        al.show();
+        if(InitData.addAWord(newWord.getText(), meanOfNewWord.getText(), selectLangNewWord.getValue())) {
+            Alert al = new Alert(Alert.AlertType.INFORMATION);
+            al.setHeaderText("Add word successfully!");
+            al.setContentText("You added new word: '" + newWord.getText().toUpperCase() + "' into " + selectLangNewWord.getValue() + " database");
+            al.show();
+        }
         newWord.clear();
         meanOfNewWord.clear();
     }
@@ -213,6 +219,10 @@ public class HelloController implements Initializable {
         if (option.get() == ButtonType.OK) {
             InitData.removeWord(listWord.getSelectionModel().getSelectedItem(), selectLangFrom.getValue());
             listWord.getItems().remove(listWord.getSelectionModel().getSelectedIndex());
+            Notifications.create()
+                    .title("Delete success")
+                    .text(word.getText() + " is deleted!").darkStyle()
+                    .showInformation();
         }
     }
 

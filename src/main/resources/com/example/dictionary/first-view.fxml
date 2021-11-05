@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #B0C4DE;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.FirstView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #B0C4DE;" stylesheets="@design1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionary.FirstView">
    <children>
       <ImageView fitHeight="306.0" fitWidth="451.0" layoutX="282.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -20,24 +20,22 @@
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor></ProgressBar>
-      <Button layoutX="438.0" layoutY="601.0" mnemonicParsing="false" onAction="#start" prefHeight="50.0" prefWidth="123.0" style="-fx-background-color: FAF9F8;" text="Start">
-         <font>
-            <Font name="Arial Bold" size="23.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="38.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../image/fire.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <cursor>
-            <Cursor fx:constant="CLOSED_HAND" />
-         </cursor></Button>
       <ImageView fitHeight="216.0" fitWidth="572.0" layoutX="206.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../image/welcomeText.png" />
          </image>
       </ImageView>
+      <Button layoutX="441.0" layoutY="595.0" mnemonicParsing="false" onAction="#start" prefHeight="47.0" prefWidth="127.0" text=" Start">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="22.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/fire.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

@@ -2,12 +2,15 @@ package com.example.dictionary;
 
 import com.example.GoogleAPI.Language;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import org.controlsfx.control.Notifications;
 
 import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
@@ -35,8 +38,8 @@ public class InitData {
             rs = statement.executeQuery("select * from vedata");
             loadFromDatabase(rs, VEdata, VEkeys);
             System.out.println("Connect success to " + con.getCatalog());
-            System.out.println(EVkeys.size());
-            System.out.println(VEkeys.size());
+            //System.out.println(EVkeys.size());
+            //System.out.println(VEkeys.size());
         } catch (SQLException e) {
             //e.printStackTrace();
             System.out.println("Can't connect");
@@ -48,8 +51,8 @@ public class InitData {
     public static void loadFromDatabase(ResultSet rs, HashMap<String, String> Tdata, ArrayList<String> Tkeys){
         try {
             while (rs.next()) {
-                Tdata.put(rs.getString(1), rs.getString(2));
-                Tkeys.add(rs.getString(1));
+                Tdata.put(rs.getString(2), rs.getString(3));
+                Tkeys.add(rs.getString(2));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -141,34 +144,59 @@ public class InitData {
         return str;
     }
 
-    public static void addAWord(String word, String mean, String lang){
+    public static boolean addAWord(String word, String mean, String lang){
         mean = "<html>" + mean + "</html>";
         if(lang.equals(Language.ENGLISH) || lang.equals("ENGLISH")){
-            EVdata.put(word, mean);
-            EVkeys.add(word);
+            if(EVkeys.contains(word)){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setHeaderText("This word is exist!");
+                alert.setContentText("Do you want to edit it?");
 
-            word = convertS(word);
-            mean = convertS(mean);
-            String addquery = "INSERT INTO `evdata` (`word`, `mean`) VALUES ('" + word + "', '" + mean + "');";
-            try {
-                statement.executeUpdate(addquery);
-            } catch (SQLException e) {
-                e.printStackTrace();
+                Optional<ButtonType> option = alert.showAndWait();
+                if (option.get() == ButtonType.OK) {
+                    editWord(word, mean, lang);
+                }
+                return false;
+            }
+            else {
+                EVdata.put(word, mean);
+                EVkeys.add(word);
+                word = convertS(word);
+                mean = convertS(mean);
+                String addquery = "INSERT INTO `evdata` (`word`, `mean`) VALUES ('" + word + "', '" + mean + "');";
+                try {
+                    statement.executeUpdate(addquery);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
         else if(lang.equals(Language.VIETNAMESE) || lang.equals("VIETNAMESE")){
-            VEdata.put(word, mean);
-            VEkeys.add(word);
+            if(EVkeys.contains(word)){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setHeaderText("This word is exist!");
+                alert.setContentText("Do you want to edit it?");
 
-            word = convertS(word);
-            mean = convertS(mean);
-            String addquery = "INSERT INTO `vedata` (`word`, `mean`) VALUES ('" + word + "', '" + mean + "');";
-            try {
-                statement.executeUpdate(addquery);
-            } catch (SQLException e) {
-                e.printStackTrace();
+                Optional<ButtonType> option = alert.showAndWait();
+                if (option.get() == ButtonType.OK) {
+                    editWord(word, mean, lang);
+                }
+                return false;
+            }
+            else {
+                VEdata.put(word, mean);
+                VEkeys.add(word);
+                word = convertS(word);
+                mean = convertS(mean);
+                String addquery = "INSERT INTO `vedata` (`word`, `mean`) VALUES ('" + word + "', '" + mean + "');";
+                try {
+                    statement.executeUpdate(addquery);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
+        return true;
     }
 
     public static void editWord(String word, String mean, String lang){
@@ -256,64 +284,64 @@ public class InitData {
 //        SaveFile(".\\data\\V_E.zip", VEdata);
     }
 
-    public static void reset(boolean showAlert){
+    private static void addWordWithoutCheck(String word, String mean, String table){
+        word = convertS(word);
+        mean = convertS(mean);
+        String addquery = "INSERT INTO `"+ table +"` (`word`, `mean`) VALUES ('" + word + "', '" + mean + "');";
+        try {
+            statement.executeUpdate(addquery);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void reset(String table){
+        try {
+            String path = ".\\data\\E_V.zip";
+            if(table.equals("vedata")) {
+                path = ".\\data\\V_E.zip";
+            }
+            FileInputStream file = new FileInputStream(path);
+            ZipInputStream zipStream = new ZipInputStream(file);
+            ZipEntry entry = zipStream.getNextEntry();
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(zipStream, "utf-8"));
+
+            String line, word, meaning;
+            int wordsNum = 0;
+            while ((line = reader.readLine()) != null) {
+                int index = line.indexOf("<html>");
+                if (index != -1) {
+                    word = line.substring(0, index);
+                    word = word.trim();
+                    meaning = line.substring(index);
+                    addWordWithoutCheck(word, meaning, table);
+                    wordsNum++;
+                }
+            }
+            reader.close();
+            System.out.println("Number word from " + path + ": " + wordsNum);
+
+        } catch (Exception e) {
+        }
+    }
+
+    public static void reset(boolean notification) {
         //true: hien thong bao
         //false: ko hien thong bao
-
-        HashMap<String, String> Rdata = new HashMap<>();
-        ArrayList<String> Rkeys = new ArrayList<>();
-
-        //Reset EVData
-        loadZipFile(".\\data\\Back up\\E_V.zip", Rdata, Rkeys);
-
-        for(String word : EVkeys){
-            //check added word
-            if(!Rkeys.contains(word)){
-                removeWord(word, Language.ENGLISH);
+        try {
+            statement.executeUpdate("TRUNCATE `evdata`");
+            statement.executeUpdate("TRUNCATE `vedata`");
+            reset("evdata");
+            reset("vedata");
+            if(notification){
+                Notifications.create()
+                        .title("Successfully")
+                        .text("Reset completely!").darkStyle()
+                        .showInformation();
             }
-        }
-
-        for(String word : Rkeys){
-            //check deleted word
-            if(!EVkeys.contains(word)){
-                addAWord(word, Rdata.get(word), Language.ENGLISH);
-            }
-            else {
-                //check edited word
-                if(!EVdata.get(word).equals(Rdata.get(word))){
-                    editWord(word, Rdata.get(word), Language.ENGLISH);
-                }
-            }
-        }
-
-        Rdata.clear();
-        Rkeys.clear();
-        //Reset VEData
-        loadZipFile(".\\data\\Back up\\V_E.zip", Rdata, Rkeys);
-
-        for(String word : VEkeys){
-            //check added word
-            if(!Rkeys.contains(word)){
-                removeWord(word, Language.VIETNAMESE);
-            }
-        }
-
-        for(String word : Rkeys){
-            //check deleted word
-            if(!VEkeys.contains(word)){
-                addAWord(word, Rdata.get(word), Language.VIETNAMESE);
-            }
-            else {
-                //check edited word
-                if(!VEdata.get(word).equals(Rdata.get(word))){
-                    editWord(word, Rdata.get(word), Language.VIETNAMESE);
-                }
-            }
-        }
-
-        System.out.println("Complete");
-        if(showAlert){
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
